@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 import Link from "next/link";
-import Image from "next/image";
 import { NavigationProps } from "@/types";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";

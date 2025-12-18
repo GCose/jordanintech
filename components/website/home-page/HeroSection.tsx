@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { gsap } from "gsap";
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -167,7 +167,7 @@ const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-background overflow-hidden min-h-screen pt-12 md:pt-10"
+      className="relative bg-background overflow-hidden min-h-screen pt-12 md:pt-10 pb-12"
     >
       <div
         ref={gridRef}
@@ -247,14 +247,14 @@ const HeroSection = () => {
 
             <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
               Mobile-first software solutions engineered for modern businesses.
-              From concept to deployment, we architect systems that scale.
-              Performance and precision in every build.
+              From concept to deployment, we architect systems that scale. You
+              don{"'"}t get a product, you get quality crafted with intent.
             </p>
           </div>
 
           <div
             ref={imageRef}
-            className="col-span-12 md:col-span-4 md:col-start-10"
+            className="col-span-12 md:col-span-4 md:col-start-10 "
           >
             <div className="relative aspect-4/5 w-full overflow-hidden">
               <Image
@@ -300,23 +300,7 @@ const HeroSection = () => {
               </span>
             </div>
           </div>
-
-          <div className="hidden md:block col-span-3 col-start-10">
-            <div className="flex flex-col gap-2">
-              <div className="w-full h-px bg-grey-medium/20"></div>
-              <div className="w-full h-px bg-grey-medium/20"></div>
-              <div className="w-3/4 h-px bg-grey-medium/20"></div>
-              <div className="w-1/2 h-px bg-grey-medium/20"></div>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-60">
-        <span className="text-xs font-medium tracking-widest text-foreground uppercase rotate-180 [writing-mode:vertical-rl]">
-          Scroll
-        </span>
-        <div className="w-px h-12 bg-foreground animate-pulse"></div>
       </div>
     </section>
   );

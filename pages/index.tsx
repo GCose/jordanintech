@@ -1,5 +1,6 @@
 import Layout from "@/components/website/layouts/Layout";
 import HeroSection from "@/components/website/home-page/HeroSection";
+import AboutSection from "@/components/website/home-page/AboutSection";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       canonicalUrl="https://jordanintech.com"
     >
       <HeroSection />
+      <AboutSection />
     </Layout>
   );
 };
