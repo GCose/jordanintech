@@ -18,12 +18,19 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from(gridRef.current, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        delay: 0.2,
+      });
+
       gsap.from(logoRef.current, {
         opacity: 0,
         y: -50,
-        duration: 1.2,
+        duration: 0.9,
         ease: "power3.out",
-        delay: 0.3,
+        delay: 0.5,
       });
 
       if (titleRef.current) {
@@ -33,57 +40,84 @@ const HeroSection = () => {
           y: 100,
           rotateX: -90,
           stagger: 0.08,
-          duration: 1,
+          duration: 0.8,
           ease: "power4.out",
-          delay: 0.5,
+          delay: 1.5,
         });
       }
 
-      gsap.from(subtitleRef.current, {
-        opacity: 0,
-        x: -100,
-        duration: 1,
-        ease: "power3.out",
-        delay: 1.2,
-      });
+      if (jitRef.current) {
+        gsap.from(jitRef.current, {
+          opacity: 0,
+          y: -50,
+          duration: 0.9,
+          ease: "power3.out",
+          delay: 2.8,
+        });
+
+        const dot1 = jitRef.current.querySelector(".jit-dot-1");
+        const dot2 = jitRef.current.querySelector(".jit-dot-2");
+        const line = jitRef.current.querySelector("line");
+
+        gsap.to(dot1, {
+          y: 50,
+          duration: 1.5,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: 3.8,
+        });
+
+        gsap.to(dot2, {
+          y: -50,
+          duration: 1.5,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: 3.8,
+        });
+
+        gsap.to(line, {
+          attr: { y1: 77, y2: 103 },
+          duration: 1.5,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: 3.8,
+        });
+
+        gsap.to(jitRef.current, {
+          rotation: 360,
+          duration: 8,
+          ease: "none",
+          repeat: -1,
+          delay: 3.8,
+        });
+      }
 
       gsap.from(imageRef.current, {
         opacity: 0,
         scale: 0.25,
-        duration: 1.2,
+        duration: 0.9,
         ease: "power3.out",
-        delay: 1.5,
+        delay: 3.8,
+      });
+
+      gsap.from(subtitleRef.current, {
+        opacity: 0,
+        x: -100,
+        duration: 0.8,
+        ease: "power3.out",
+        delay: 5,
       });
 
       gsap.from(ctaRef.current, {
         opacity: 0,
         scale: 0.8,
-        duration: 0.8,
+        duration: 0.7,
         ease: "back.out(1.7)",
-        delay: 1.8,
+        delay: 6.2,
       });
-
-      gsap.from(gridRef.current, {
-        opacity: 0,
-        duration: 1.5,
-        ease: "power2.out",
-        delay: 0.8,
-      });
-
-      if (jitRef.current) {
-        const jitChars = jitRef.current.querySelectorAll(".jit-char");
-
-        jitChars.forEach((char, index) => {
-          gsap.to(char, {
-            y: -20,
-            duration: 1.5,
-            ease: "power1.inOut",
-            repeat: -1,
-            yoyo: true,
-            delay: index * 0.3,
-          });
-        });
-      }
 
       gsap.to(titleRef.current, {
         yPercent: 50,
@@ -133,39 +167,50 @@ const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-background overflow-hidden min-h-screen pt-32 md:pt-10"
+      className="relative bg-background overflow-hidden min-h-screen pt-12 md:pt-10"
     >
       <div
         ref={gridRef}
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        className="absolute inset-0 opacity-[0.2] pointer-events-none"
       >
         <div className="absolute top-0 left-1/3 w-px h-full bg-foreground"></div>
         <div className="absolute top-0 right-1/3 w-px h-full bg-foreground"></div>
       </div>
 
-      <div
-        ref={jitRef}
-        className="absolute top-8 right-8 flex gap-1 text-[clamp(1.4rem,10vw,15rem)] font-bold px-6 pt-32 border"
-        style={{ fontFamily: "'Viaoda Libre', serif" }}
-      >
-        <span className="jit-char inline-block bg-linear-to-t from-foreground to-brand-primary bg-clip-text text-transparent">
-          J
-        </span>
-        <span className="jit-char inline-block bg-linear-to-t from-foreground to-brand-primary bg-clip-text text-transparent">
-          I
-        </span>
-        <span className="jit-char inline-block bg-linear-to-t from-foreground to-brand-primary bg-clip-text text-transparent">
-          T
-        </span>
+      <div ref={jitRef} className="absolute top-8 right-30 px-6 pt-32 ">
+        <svg
+          width="80"
+          height="180"
+          viewBox="0 0 80 180"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle className="jit-dot-1" cx="40" cy="15" r="12" fill="#007BFF" />
+          <line
+            x1="40"
+            y1="27"
+            x2="40"
+            y2="153"
+            stroke="#007BFF"
+            strokeWidth="1.5"
+          />
+          <circle
+            className="jit-dot-2"
+            cx="40"
+            cy="165"
+            r="12"
+            fill="#007BFF"
+          />
+        </svg>
       </div>
 
       <div className="px-4 md:px-0">
-        <div className="grid grid-cols-12 gap-x-8 gap-16 md:gap-16 items-center">
+        <div className="grid grid-cols-12 gap-x-8 gap-12 md:gap-2 items-center">
           <div
             ref={logoRef}
             className="col-span-12 md:col-span-3 md:col-start-1 flex justify-start"
           >
-            <div className="relative w-40 h-40 md:w-66 md:h-66 border">
+            <div className="relative w-50 h-70 md:w-66 md:h-66 border">
               <Image
                 fill
                 priority
@@ -179,17 +224,19 @@ const HeroSection = () => {
           <div className="col-span-12 md:col-span-11 md:col-start-3">
             <h1
               ref={titleRef}
-              className="text-foreground mb-12 text-[clamp(4rem,14vw,20rem)] leading-[0.85] tracking-[-0.04em]"
+              className="text-foreground mb-12 text-[clamp(4rem,10vw,15rem)] leading-none tracking-[-0.04em]"
             >
               {splitText("JORDAN")}
               <br />
-              {splitText("IN TECH")}
+              <span className="pl-15 md:pl-50 lg:pl-100">
+                {splitText("IN TECH")}
+              </span>
             </h1>
           </div>
 
           <div
             ref={subtitleRef}
-            className="col-span-12 md:col-span-5 md:col-start-3 space-y-16"
+            className="col-span-12 md:col-span-7 md:col-start-2 md:space-y-26 lg:space-y-16"
           >
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-0.5 bg-brand-primary"></div>
@@ -198,15 +245,16 @@ const HeroSection = () => {
               </span>
             </div>
 
-            <p className="text-[clamp(1.5rem,4vw,2.5rem)] font-light text-grey-medium leading-relaxed">
+            <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
               Mobile-first software solutions engineered for modern businesses.
               From concept to deployment, we architect systems that scale.
+              Performance and precision in every build.
             </p>
           </div>
 
           <div
             ref={imageRef}
-            className="col-span-12 md:col-span-4 md:col-start-9"
+            className="col-span-12 md:col-span-4 md:col-start-10"
           >
             <div className="relative aspect-4/5 w-full overflow-hidden">
               <Image

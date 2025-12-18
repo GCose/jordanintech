@@ -66,14 +66,10 @@ const Navigation = ({ transparent = false }: NavigationProps) => {
             href="/"
             className="group relative flex items-center gap-3"
           >
-            <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
-              <Image
-                src="/images/logo.jpg"
-                alt="JordanInTech"
-                fill
-                className="object-contain"
-                priority
-              />
+            <div className="flex flex-col leading-none">
+              <span className="text-[clamp(1.125rem,1.5vw,3rem)] text-brand-primary">
+                JIT
+              </span>
             </div>
           </Link>
 
