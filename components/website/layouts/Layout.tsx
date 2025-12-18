@@ -61,7 +61,7 @@ const Layout = ({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/logo.jpg" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <script

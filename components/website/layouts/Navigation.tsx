@@ -59,7 +59,7 @@ const Navigation = ({ transparent = false }: NavigationProps) => {
           : "bg-transparent"
       }`}
     >
-      <div className="px-8 py-4">
+      <div className="px-4 py-2">
         <div className="flex items-center justify-between">
           <Link
             ref={logoRef}
