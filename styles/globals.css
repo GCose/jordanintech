@@ -8,6 +8,9 @@
   --grey-light: #fafafa;
   --grey-medium: #666666;
   --grey-dark: #999999;
+
+  --font-display: "Stardom", sans-serif;
+  --font-body: "Satoshi", sans-serif;
 }
 
 @theme inline {
@@ -15,12 +18,9 @@
   --color-foreground: var(--foreground);
   --color-brand-primary: var(--brand-primary);
   --color-brand-secondary: var(--brand-secondary);
-}
 
-.viaoda-libre-regular {
-  font-family: "Viaoda Libre", serif;
-  font-weight: 400;
-  font-style: normal;
+  --font-family-display: var(--font-display);
+  --font-family-body: var(--font-body);
 }
 
 * {
@@ -36,9 +36,25 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.viaoda-libre-regular {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
 }
 
 @layer utilities {

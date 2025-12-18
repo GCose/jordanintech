@@ -70,8 +70,10 @@ const Layout = ({
         />
       </Head>
 
-      <Navigation />
-      <main>{children}</main>
+      <div className="relative min-h-screen bg-background">
+        <Navigation />
+        <main className="relative">{children}</main>
+      </div>
     </>
   );
 };

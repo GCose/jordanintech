@@ -11,7 +11,7 @@ export default function Document() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=stardom@400&display=swap"
           rel="stylesheet"
         />
         <link
