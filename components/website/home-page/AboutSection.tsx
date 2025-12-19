@@ -65,7 +65,7 @@ const AboutSection = () => {
             duration: 1.4,
             ease: "power4.out",
           },
-          "-=1.5"
+          "-=0.4"
         );
       }
 
@@ -77,7 +77,7 @@ const AboutSection = () => {
           duration: 1.2,
           ease: "power3.out",
         },
-        "-=0.5"
+        "+=0.5"
       )
         .from(
           approachRef.current,
@@ -87,7 +87,7 @@ const AboutSection = () => {
             duration: 1.2,
             ease: "power3.out",
           },
-          "-=0.4"
+          "+=0.4"
         )
         .from(
           image2Ref.current,
@@ -97,7 +97,7 @@ const AboutSection = () => {
             duration: 1.4,
             ease: "power3.out",
           },
-          "-=0.4"
+          "+=0.4"
         );
 
       if (statsRef.current) {
@@ -138,6 +138,61 @@ const AboutSection = () => {
 
       gsap.to(titleRef.current, {
         yPercent: 25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(textBlockRef.current, {
+        yPercent: -10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(approachRef.current, {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(statsRef.current, {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(labelRef.current, {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(verticalTextRef.current, {
+        yPercent: 30,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -265,13 +320,13 @@ const AboutSection = () => {
 
           <div
             ref={statsRef}
-            className="col-span-12 md:col-span-6 md:col-start-7 md:row-start-4 flex flex-col justify-center md:pl-20 lg:pl-40 gap-8 pt-4 md:pt-40"
+            className="col-span-12 md:col-span-6 md:col-start-7 md:row-start-4 flex flex-col justify-center gap-8 pt-4 md:pl-20 lg:pl-40  md:pt-80"
           >
             <div className="space-y-3 border-b border-foreground/10 pb-6">
               <div className="text-[clamp(2.5rem,5vw,4rem)] text-brand-primary leading-none">
                 50+
               </div>
-              <p className="text-[clamp(1.1rem,2vw,1.3rem)] font-light text-grey-medium tracking-wide">
+              <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium tracking-wide">
                 Projects delivered from MVP to production scale
               </p>
             </div>
@@ -280,7 +335,7 @@ const AboutSection = () => {
               <div className="text-[clamp(2.5rem,5vw,4rem)] text-brand-primary leading-none">
                 3-6
               </div>
-              <p className="text-[clamp(1.1rem,2vw,1.3rem)] font-light text-grey-medium tracking-wide">
+              <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium tracking-wide">
                 Months average timeline from concept to launch
               </p>
             </div>
@@ -292,7 +347,7 @@ const AboutSection = () => {
                   Taking New Projects
                 </span>
               </div>
-              <p className="text-[clamp(1.1rem,2vw,1.3rem)] font-light text-grey-medium">
+              <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium">
                 Kairaba Avenue, Banjul • The Gambia
               </p>
             </div>

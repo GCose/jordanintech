@@ -53,6 +53,7 @@ const ProjectsSection = () => {
   const ropeRef = useRef<SVGPathElement>(null);
   const dot1Ref = useRef<SVGCircleElement>(null);
   const dot2Ref = useRef<SVGCircleElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -72,6 +73,11 @@ const ProjectsSection = () => {
         yPercent: -50,
         transformStyle: "preserve-3d",
         transformOrigin: "center center",
+      });
+
+      gsap.set(logoRef.current, {
+        opacity: 0,
+        scale: 0.8,
       });
 
       cards.forEach((card, index) => {
@@ -94,18 +100,84 @@ const ProjectsSection = () => {
         }
       });
 
+      const getCardPositions = (card: HTMLDivElement) => {
+        if (!cardsContainerRef.current) return null;
+
+        const container = cardsContainerRef.current;
+        const containerRect = container.getBoundingClientRect();
+        const cardImage = card.querySelector(".aspect-16\\/10");
+
+        if (!cardImage) return null;
+
+        const cardRect = cardImage.getBoundingClientRect();
+
+        return {
+          rightX: cardRect.right - containerRect.left,
+          rightY: cardRect.top + cardRect.height / 2 - containerRect.top,
+          leftX: cardRect.left - containerRect.left,
+          leftY: cardRect.top + cardRect.height / 2 - containerRect.top,
+        };
+      };
+
+      const updateRope = (
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        animationProgress: number
+      ) => {
+        if (!ropeRef.current || !dot1Ref.current || !dot2Ref.current) return;
+
+        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        const sagAmount = Math.min(distance * 0.15, 120);
+
+        const midX = (x1 + x2) / 2;
+        const midY = (y1 + y2) / 2;
+
+        const rotationOffset = Math.sin(animationProgress * Math.PI) * 50;
+
+        const cp1x = x1 + (midX - x1) * 0.5;
+        const cp1y = midY + sagAmount + rotationOffset;
+        const cp2x = x2 - (x2 - midX) * 0.5;
+        const cp2y = midY + sagAmount - rotationOffset;
+
+        const d = `M ${x1} ${y1} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x2} ${y2}`;
+        ropeRef.current.setAttribute("d", d);
+
+        dot1Ref.current.setAttribute("cx", x1.toString());
+        dot1Ref.current.setAttribute("cy", y1.toString());
+        dot2Ref.current.setAttribute("cx", x2.toString());
+        dot2Ref.current.setAttribute("cy", y2.toString());
+
+        ropeRef.current.style.opacity = "1";
+        dot1Ref.current.style.opacity = "1";
+        dot2Ref.current.style.opacity = "1";
+      };
+
       const masterTimeline = gsap.timeline();
 
       masterTimeline.to(cards[0], {
         scale: 1,
         duration: 1,
         ease: "power2.out",
+        onUpdate: function () {
+          // Hide rope when scaling down (going backwards)
+          if (ropeRef.current && dot1Ref.current && dot2Ref.current) {
+            const progress = this.progress();
+            const opacity = progress > 0.5 ? "1" : "0";
+            ropeRef.current.style.opacity = opacity;
+            dot1Ref.current.style.opacity = opacity;
+            dot2Ref.current.style.opacity = opacity;
+          }
+        },
       });
 
       cards.forEach((card, index) => {
         if (index < cards.length - 1) {
           const nextCard = cards[index + 1];
+          const cardAfterNext = cards[index + 2];
 
+          // Transition: Pull next card in
           masterTimeline.to(
             card,
             {
@@ -117,7 +189,18 @@ const ProjectsSection = () => {
               ease: "power2.inOut",
               onUpdate: function () {
                 if (card && nextCard) {
-                  updateRope(card, nextCard, this.progress());
+                  const exitPos = getCardPositions(card);
+                  const enterPos = getCardPositions(nextCard);
+
+                  if (exitPos && enterPos) {
+                    updateRope(
+                      exitPos.rightX,
+                      exitPos.rightY,
+                      enterPos.leftX,
+                      enterPos.leftY,
+                      this.progress()
+                    );
+                  }
                 }
               },
             },
@@ -136,67 +219,36 @@ const ProjectsSection = () => {
             },
             "<"
           );
+
+          // Reposition: Move rope to prepare for next pull
+          if (cardAfterNext) {
+            masterTimeline.to(
+              {},
+              {
+                duration: 0.5,
+                ease: "power2.inOut",
+                onUpdate: function () {
+                  if (nextCard && cardAfterNext) {
+                    const currentPos = getCardPositions(nextCard);
+                    const nextNextPos = getCardPositions(cardAfterNext);
+
+                    if (currentPos && nextNextPos) {
+                      updateRope(
+                        currentPos.rightX,
+                        currentPos.rightY,
+                        nextNextPos.leftX,
+                        nextNextPos.leftY,
+                        this.progress()
+                      );
+                    }
+                  }
+                },
+              },
+              "+=0.2"
+            );
+          }
         }
       });
-
-      const updateRope = (
-        exitingCard: HTMLDivElement,
-        enteringCard: HTMLDivElement,
-        progress: number
-      ) => {
-        if (!ropeRef.current || !dot1Ref.current || !dot2Ref.current) return;
-
-        const container = cardsContainerRef.current;
-        if (!container) return;
-
-        const containerRect = container.getBoundingClientRect();
-
-        // Get the actual card image elements
-        const exitCardImage = exitingCard.querySelector(".aspect-16\\/10");
-        const enterCardImage = enteringCard.querySelector(".aspect-16\\/10");
-
-        if (!exitCardImage || !enterCardImage) return;
-
-        const exitRect = exitCardImage.getBoundingClientRect();
-        const enterRect = enterCardImage.getBoundingClientRect();
-
-        // Right center edge of exiting card
-        const x1 = exitRect.right - containerRect.left;
-        const y1 = exitRect.top + exitRect.height / 2 - containerRect.top;
-
-        // Left center edge of entering card
-        const x2 = enterRect.left - containerRect.left;
-        const y2 = enterRect.top + enterRect.height / 2 - containerRect.top;
-
-        // Bezier curve control points for rope sag/tension with rotation effect
-        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        const sagAmount = Math.min(distance * 0.15, 120);
-
-        const midX = (x1 + x2) / 2;
-        const midY = (y1 + y2) / 2;
-
-        // Add rotation effect - rope swings as cards transition
-        const rotationOffset = Math.sin(progress * Math.PI) * 50;
-
-        const cp1x = x1 + (midX - x1) * 0.5;
-        const cp1y = midY + sagAmount + rotationOffset;
-        const cp2x = x2 - (x2 - midX) * 0.5;
-        const cp2y = midY + sagAmount - rotationOffset;
-
-        const d = `M ${x1} ${y1} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x2} ${y2}`;
-        ropeRef.current.setAttribute("d", d);
-
-        dot1Ref.current.setAttribute("cx", x1.toString());
-        dot1Ref.current.setAttribute("cy", y1.toString());
-        dot2Ref.current.setAttribute("cx", x2.toString());
-        dot2Ref.current.setAttribute("cy", y2.toString());
-
-        // Keep rope visible throughout transition
-        const isTransitioning = progress > 0 && progress < 1;
-        ropeRef.current.style.opacity = isTransitioning ? "1" : "0";
-        dot1Ref.current.style.opacity = isTransitioning ? "1" : "0";
-        dot2Ref.current.style.opacity = isTransitioning ? "1" : "0";
-      };
 
       ScrollTrigger.create({
         trigger: cardsContainerRef.current,
@@ -206,6 +258,29 @@ const ProjectsSection = () => {
         pinSpacing: true,
         scrub: 1,
         animation: masterTimeline,
+      });
+
+      // Logo animation - visible only when cards container is pinned
+      gsap.to(logoRef.current, {
+        opacity: 1,
+        scale: 1,
+        scrollTrigger: {
+          trigger: cardsContainerRef.current,
+          start: "top top",
+          end: "top top+=10%",
+          scrub: 1,
+        },
+      });
+
+      gsap.to(logoRef.current, {
+        opacity: 0,
+        scale: 0.8,
+        scrollTrigger: {
+          trigger: cardsContainerRef.current,
+          start: "bottom-=10% top",
+          end: "bottom top",
+          scrub: 1,
+        },
       });
 
       const tl = gsap.timeline({
@@ -390,6 +465,19 @@ const ProjectsSection = () => {
           transformStyle: "preserve-3d",
         }}
       >
+        <div
+          ref={logoRef}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-0"
+        >
+          <Image
+            src="/images/logo-2.png"
+            alt="JordanInTech Logo"
+            width={620}
+            height={620}
+            className="object-contain"
+          />
+        </div>
+
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none z-50"
           style={{ overflow: "visible" }}
