@@ -43,8 +43,11 @@ const projects = [
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLDivElement>(null);
+  const numberRef = useRef<HTMLDivElement>(null);
+  const verticalTextRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -137,6 +140,107 @@ const ProjectsSection = () => {
         scrub: 1,
         animation: masterTimeline,
       });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      tl.from(labelRef.current, {
+        opacity: 0,
+        x: -40,
+        duration: 1,
+        ease: "power3.out",
+      })
+        .from(
+          numberRef.current,
+          {
+            opacity: 0,
+            scale: 1.2,
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          "+=0.2"
+        )
+        .from(
+          verticalTextRef.current,
+          {
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.6"
+        );
+
+      if (titleRef.current) {
+        const titleWords = titleRef.current.querySelectorAll(".title-word");
+        tl.from(
+          titleWords,
+          {
+            opacity: 0,
+            y: 120,
+            rotateX: -90,
+            stagger: 0.5,
+            duration: 1.4,
+            ease: "power4.out",
+          },
+          "-=1.5"
+        );
+      }
+
+      tl.from(
+        descRef.current,
+        {
+          opacity: 0,
+          y: 80,
+          duration: 1.2,
+          ease: "power3.out",
+        },
+        "-=0.5"
+      );
+
+      gsap.fromTo(
+        numberRef.current,
+        {
+          yPercent: 0,
+        },
+        {
+          yPercent: -200,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+
+      gsap.to(titleRef.current, {
+        yPercent: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(descRef.current, {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -154,33 +258,62 @@ const ProjectsSection = () => {
         <div className="absolute top-0 left-5/6 w-px h-full bg-background"></div>
       </div>
 
-      <div className="relative px-8 pt-32 text-center">
-        <div ref={introRef} className="max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="w-12 h-px bg-brand-primary"></div>
-            <span className="text-xs font-medium tracking-widest text-brand-primary uppercase">
-              Our Work
-            </span>
-            <div className="w-12 h-px bg-brand-primary"></div>
-          </div>
-          <p className="text-xl md:text-2xl font-light text-grey-medium leading-relaxed">
-            Here are some of our best solutions. Mobile apps, web platforms, and
-            backend systems built to handle real traffic, real users, and real
-            growth.
-          </p>
-        </div>
+      <div
+        ref={numberRef}
+        className="absolute top-[5%] right-0 text-[clamp(15rem,35vw,40rem)] text-brand-primary/10 leading-none pointer-events-none select-none"
+      >
+        04
+      </div>
 
-        <h2
-          ref={titleRef}
-          className="text-[clamp(4rem,12vw,14rem)] leading-none tracking-[-0.04em] uppercase text-background"
-        >
-          Our Solutions
-        </h2>
+      <div
+        ref={verticalTextRef}
+        className="hidden md:block absolute left-8 top-1/2 -translate-y-1/2 z-50"
+      >
+        <span className="text-lg font-light text-grey-medium tracking-[0.4em] uppercase rotate-180 [writing-mode:vertical-rl]">
+          Portfolio 2024
+        </span>
+      </div>
+
+      <div className="relative px-4 md:px-8 pt-32">
+        <div className="grid grid-cols-12 gap-x-4 md:gap-x-8">
+          <div
+            ref={labelRef}
+            className="col-span-12 md:col-span-4 md:col-start-1 mb-8"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-px bg-brand-primary"></div>
+              <span className="text-[0.625rem] font-medium tracking-[0.3em] text-brand-primary uppercase">
+                Our Work
+              </span>
+            </div>
+          </div>
+
+          <div className="col-span-12 md:col-span-8 md:col-start-1 relative z-10">
+            <h2
+              ref={titleRef}
+              className="text-[clamp(3.5rem,8vw,10rem)] leading-[1.05] tracking-[-0.04em] uppercase"
+            >
+              <span className="title-word block origin-bottom">Work That</span>
+              <span className="title-word block pl-4 md:pl-50 lg:pl-100 origin-bottom">
+                Matters
+              </span>
+            </h2>
+
+            <p
+              ref={descRef}
+              className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-background leading-relaxed pt-50 mt-8 md:mt-12 max-w-3xl md:ml-50 lg:ml-100"
+            >
+              These aren{"'"}t portfolio pieces. They{"'"}re live applications
+              serving thousands of users. Real transactions. Real data. Real
+              businesses depending on uptime.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div
         ref={cardsContainerRef}
-        className="relative w-full flex flex-col items-start justify-start h-screen overflow-hidden py-16 md:py-24"
+        className="relative w-full flex flex-col items-start justify-start h-screen overflow-hidden mt-32 py-16 md:py-24"
         style={{
           perspective: 800,
           perspectiveOrigin: "50% 50%",
