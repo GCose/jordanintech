@@ -1,8 +1,10 @@
+import { HomeProps } from "@/types";
 import Layout from "@/components/website/layouts/Layout";
 import HeroSection from "@/components/website/home-page/HeroSection";
 import AboutSection from "@/components/website/home-page/AboutSection";
+import ProjectsSection from "@/components/website/home-page/ProjectsSection";
 
-const Home = () => {
+const Home = ({ isReady = false }: HomeProps) => {
   return (
     <Layout
       title="JordanInTech | Mobile-First Software Solutions"
@@ -10,9 +12,11 @@ const Home = () => {
       keywords="software development, mobile apps, web applications, React Native, Next.js, Django, system architecture, database design, The Gambia, Kairaba Avenue"
       ogImage="/images/og-home.jpg"
       canonicalUrl="https://jordanintech.com"
+      isReady={isReady}
     >
-      <HeroSection />
+      <HeroSection isReady={isReady} />
       <AboutSection />
+      <ProjectsSection />
     </Layout>
   );
 };

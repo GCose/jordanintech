@@ -13,12 +13,14 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         onComplete: () => {
           document.body.style.overflow = "";
-          setTimeout(() => onComplete(), 300);
+          document.documentElement.style.overflow = "";
+          setTimeout(() => onComplete(), 30);
         },
       });
 
@@ -50,6 +52,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     return () => {
       ctx.revert();
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [onComplete]);
 

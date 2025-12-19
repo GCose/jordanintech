@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { HeroSectionProps } from "@/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroSection = () => {
+const HeroSection = ({ isReady = false }: HeroSectionProps) => {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
@@ -17,17 +18,33 @@ const HeroSection = () => {
   const jitRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.set(gridRef.current, { opacity: 0 });
+    gsap.set(logoRef.current, { opacity: 0, y: -50 });
+    gsap.set(jitRef.current, { opacity: 0, y: -50 });
+    gsap.set(imageRef.current, { opacity: 0, scale: 0.25 });
+    gsap.set(subtitleRef.current, { opacity: 0, x: -100 });
+    gsap.set(ctaRef.current, { opacity: 0, scale: 0.8 });
+
+    if (titleRef.current) {
+      const chars = titleRef.current.querySelectorAll(".char");
+      gsap.set(chars, { opacity: 0, y: 100, rotateX: -90 });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isReady) return;
+
     const ctx = gsap.context(() => {
-      gsap.from(gridRef.current, {
-        opacity: 0,
+      gsap.to(gridRef.current, {
+        opacity: 0.2,
         duration: 1,
         ease: "power2.out",
         delay: 0.2,
       });
 
-      gsap.from(logoRef.current, {
-        opacity: 0,
-        y: -50,
+      gsap.to(logoRef.current, {
+        opacity: 1,
+        y: 0,
         duration: 0.9,
         ease: "power3.out",
         delay: 0.5,
@@ -35,10 +52,10 @@ const HeroSection = () => {
 
       if (titleRef.current) {
         const chars = titleRef.current.querySelectorAll(".char");
-        gsap.from(chars, {
-          opacity: 0,
-          y: 100,
-          rotateX: -90,
+        gsap.to(chars, {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
           stagger: 0.08,
           duration: 0.8,
           ease: "power4.out",
@@ -47,9 +64,9 @@ const HeroSection = () => {
       }
 
       if (jitRef.current) {
-        gsap.from(jitRef.current, {
-          opacity: 0,
-          y: -50,
+        gsap.to(jitRef.current, {
+          opacity: 1,
+          y: 0,
           duration: 0.9,
           ease: "power3.out",
           delay: 2.8,
@@ -95,25 +112,25 @@ const HeroSection = () => {
         });
       }
 
-      gsap.from(imageRef.current, {
-        opacity: 0,
-        scale: 0.25,
+      gsap.to(imageRef.current, {
+        opacity: 1,
+        scale: 1,
         duration: 0.9,
         ease: "power3.out",
         delay: 3.8,
       });
 
-      gsap.from(subtitleRef.current, {
-        opacity: 0,
-        x: -100,
+      gsap.to(subtitleRef.current, {
+        opacity: 1,
+        x: 0,
         duration: 0.8,
         ease: "power3.out",
         delay: 5,
       });
 
-      gsap.from(ctaRef.current, {
-        opacity: 0,
-        scale: 0.8,
+      gsap.to(ctaRef.current, {
+        opacity: 1,
+        scale: 1,
         duration: 0.7,
         ease: "back.out(1.7)",
         delay: 6.2,
@@ -154,7 +171,7 @@ const HeroSection = () => {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isReady]);
 
   const splitText = (text: string) => {
     return text.split("").map((char, index) => (
@@ -169,10 +186,7 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative bg-background overflow-hidden min-h-screen md:pt-10 pb-12"
     >
-      <div
-        ref={gridRef}
-        className="absolute inset-0 opacity-[0.2] pointer-events-none"
-      >
+      <div ref={gridRef} className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/3 w-px h-full bg-foreground"></div>
         <div className="absolute top-0 right-1/3 w-px h-full bg-foreground"></div>
       </div>

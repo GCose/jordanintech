@@ -33,28 +33,34 @@ const Navigation = ({
   }, []);
 
   useEffect(() => {
+    gsap.set(logoRef.current, { opacity: 0, x: -30 });
+    gsap.set(itemsRef.current?.children || [], { opacity: 0, y: -20 });
+    gsap.set(statusRef.current, { opacity: 0, x: 30 });
+  }, []);
+
+  useEffect(() => {
     if (!isReady) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(logoRef.current, {
-        opacity: 0,
-        x: -30,
+      gsap.to(logoRef.current, {
+        opacity: 1,
+        x: 0,
         duration: 0.8,
         ease: "power3.out",
       });
 
-      gsap.from(itemsRef.current?.children || [], {
-        opacity: 0,
-        y: -20,
+      gsap.to(itemsRef.current?.children || [], {
+        opacity: 1,
+        y: 0,
         stagger: 0.1,
         duration: 0.6,
         ease: "power2.out",
         delay: 0.2,
       });
 
-      gsap.from(statusRef.current, {
-        opacity: 0,
-        x: 30,
+      gsap.to(statusRef.current, {
+        opacity: 1,
+        x: 0,
         duration: 0.6,
         ease: "power2.out",
         delay: 0.4,

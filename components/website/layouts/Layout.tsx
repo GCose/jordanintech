@@ -9,6 +9,7 @@ const Layout = ({
   keywords = "software development, mobile apps, web development, React Native, Next.js, Django, system architecture, database design, The Gambia",
   ogImage = "/images/og-image.jpg",
   canonicalUrl = "https://jordanintech.com",
+  isReady = false,
 }: LayoutProps) => {
   const siteName = "JordanInTech";
   const fullTitle = `${title} | ${siteName}`;
@@ -71,7 +72,7 @@ const Layout = ({
       </Head>
 
       <div className="relative min-h-screen bg-background">
-        <Navigation />
+        <Navigation isReady={isReady} />
         <main className="relative">{children}</main>
       </div>
     </>

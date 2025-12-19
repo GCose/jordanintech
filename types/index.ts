@@ -36,11 +36,16 @@ export interface LayoutProps {
     keywords?: string;
     ogImage?: string;
     canonicalUrl?: string;
+    isReady?: boolean;
 }
 
 export interface NavigationProps {
     transparent?: boolean;
     isReady?: boolean;
+}
+
+export interface LoadingScreenProps {
+    onComplete: () => void;
 }
 
 export interface SectionProps {
@@ -49,6 +54,10 @@ export interface SectionProps {
     id?: string;
 }
 
-export interface LoadingScreenProps {
-    onComplete: () => void;
+export interface HeroSectionProps {
+    isReady?: boolean;
+}
+
+export interface HomeProps {
+    isReady?: boolean;
 }
