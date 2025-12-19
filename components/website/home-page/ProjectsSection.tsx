@@ -50,6 +50,9 @@ const ProjectsSection = () => {
   const descRef = useRef<HTMLParagraphElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const ropeRef = useRef<SVGPathElement>(null);
+  const dot1Ref = useRef<SVGCircleElement>(null);
+  const dot2Ref = useRef<SVGCircleElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -112,6 +115,11 @@ const ProjectsSection = () => {
               rotateY: -60,
               duration: 1.5,
               ease: "power2.inOut",
+              onUpdate: function () {
+                if (card && nextCard) {
+                  updateRope(card, nextCard, this.progress());
+                }
+              },
             },
             "+=0"
           );
@@ -130,6 +138,65 @@ const ProjectsSection = () => {
           );
         }
       });
+
+      const updateRope = (
+        exitingCard: HTMLDivElement,
+        enteringCard: HTMLDivElement,
+        progress: number
+      ) => {
+        if (!ropeRef.current || !dot1Ref.current || !dot2Ref.current) return;
+
+        const container = cardsContainerRef.current;
+        if (!container) return;
+
+        const containerRect = container.getBoundingClientRect();
+
+        // Get the actual card image elements
+        const exitCardImage = exitingCard.querySelector(".aspect-16\\/10");
+        const enterCardImage = enteringCard.querySelector(".aspect-16\\/10");
+
+        if (!exitCardImage || !enterCardImage) return;
+
+        const exitRect = exitCardImage.getBoundingClientRect();
+        const enterRect = enterCardImage.getBoundingClientRect();
+
+        // Right center edge of exiting card
+        const x1 = exitRect.right - containerRect.left;
+        const y1 = exitRect.top + exitRect.height / 2 - containerRect.top;
+
+        // Left center edge of entering card
+        const x2 = enterRect.left - containerRect.left;
+        const y2 = enterRect.top + enterRect.height / 2 - containerRect.top;
+
+        // Bezier curve control points for rope sag/tension with rotation effect
+        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        const sagAmount = Math.min(distance * 0.15, 120);
+
+        const midX = (x1 + x2) / 2;
+        const midY = (y1 + y2) / 2;
+
+        // Add rotation effect - rope swings as cards transition
+        const rotationOffset = Math.sin(progress * Math.PI) * 50;
+
+        const cp1x = x1 + (midX - x1) * 0.5;
+        const cp1y = midY + sagAmount + rotationOffset;
+        const cp2x = x2 - (x2 - midX) * 0.5;
+        const cp2y = midY + sagAmount - rotationOffset;
+
+        const d = `M ${x1} ${y1} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x2} ${y2}`;
+        ropeRef.current.setAttribute("d", d);
+
+        dot1Ref.current.setAttribute("cx", x1.toString());
+        dot1Ref.current.setAttribute("cy", y1.toString());
+        dot2Ref.current.setAttribute("cx", x2.toString());
+        dot2Ref.current.setAttribute("cy", y2.toString());
+
+        // Keep rope visible throughout transition
+        const isTransitioning = progress > 0 && progress < 1;
+        ropeRef.current.style.opacity = isTransitioning ? "1" : "0";
+        dot1Ref.current.style.opacity = isTransitioning ? "1" : "0";
+        dot2Ref.current.style.opacity = isTransitioning ? "1" : "0";
+      };
 
       ScrollTrigger.create({
         trigger: cardsContainerRef.current,
@@ -299,14 +366,17 @@ const ProjectsSection = () => {
               </span>
             </h2>
 
-            <p
-              ref={descRef}
-              className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-background leading-relaxed pt-50 mt-8 md:mt-12 max-w-3xl md:ml-50 lg:ml-100"
-            >
-              These aren{"'"}t portfolio pieces. They{"'"}re live applications
-              serving thousands of users. Real transactions. Real data. Real
-              businesses depending on uptime.
-            </p>
+            <div className="flex items-center gap-6 pt-40 mt-8 md:mt-12 md:ml-10">
+              <div className="w-12 md:w-124 h-px bg-white/30 shrink-0"></div>
+              <p
+                ref={descRef}
+                className="text-[clamp(1.5rem,2vw,2.5rem)] w-full font-light text-background leading-relaxed "
+              >
+                These aren{"'"}t portfolio pieces. They{"'"}re live applications
+                serving thousands of users. Real transactions. Real data. Real
+                businesses depending on uptime.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -320,6 +390,23 @@ const ProjectsSection = () => {
           transformStyle: "preserve-3d",
         }}
       >
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none z-50"
+          style={{ overflow: "visible" }}
+        >
+          <path
+            ref={ropeRef}
+            d=""
+            stroke="#007bff"
+            strokeWidth="2"
+            fill="none"
+            opacity="0"
+            strokeLinecap="round"
+          />
+          <circle ref={dot1Ref} r="6" fill="#007bff" opacity="0" />
+          <circle ref={dot2Ref} r="6" fill="#007bff" opacity="0" />
+        </svg>
+
         {projects.map((project, index) => (
           <div
             key={project.id}
