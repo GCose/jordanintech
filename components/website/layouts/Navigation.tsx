@@ -9,12 +9,14 @@ const Navigation = ({
   isReady = false,
 }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const itemsRef = useRef<HTMLUListElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   const navItems = [
@@ -25,10 +27,20 @@ const Navigation = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      setIsScrolled(currentScrollY > 50);
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -116,7 +128,7 @@ const Navigation = ({
           isScrolled || !transparent
             ? "bg-background/95 backdrop-blur-lg border-b border-grey-medium/10"
             : "bg-transparent"
-        }`}
+        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
       >
         <div className="px-4 py-2">
           <div className="flex items-center justify-between">

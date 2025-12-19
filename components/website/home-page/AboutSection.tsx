@@ -65,7 +65,7 @@ const AboutSection = () => {
             duration: 1.4,
             ease: "power4.out",
           },
-          "-=0.4"
+          "-=1.5"
         );
       }
 
@@ -77,7 +77,7 @@ const AboutSection = () => {
           duration: 1.2,
           ease: "power3.out",
         },
-        "+=0.5"
+        "-=0.5"
       )
         .from(
           approachRef.current,
@@ -87,7 +87,7 @@ const AboutSection = () => {
             duration: 1.2,
             ease: "power3.out",
           },
-          "+=0.4"
+          "-=0.4"
         )
         .from(
           image2Ref.current,
@@ -97,7 +97,7 @@ const AboutSection = () => {
             duration: 1.4,
             ease: "power3.out",
           },
-          "+=0.4"
+          "-=0.4"
         );
 
       if (statsRef.current) {
