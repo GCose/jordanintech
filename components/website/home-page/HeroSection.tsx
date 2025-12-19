@@ -167,7 +167,7 @@ const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-background overflow-hidden min-h-screen pt-12 md:pt-10 pb-12"
+      className="relative bg-background overflow-hidden min-h-screen md:pt-10 pb-12"
     >
       <div
         ref={gridRef}
@@ -177,7 +177,7 @@ const HeroSection = () => {
         <div className="absolute top-0 right-1/3 w-px h-full bg-foreground"></div>
       </div>
 
-      <div ref={jitRef} className="absolute top-8 right-30 px-6 pt-32 ">
+      <div ref={jitRef} className="absolute top-8 right-0 md:right-30 px-6 pt-32 ">
         <svg
           width="80"
           height="180"
@@ -205,7 +205,7 @@ const HeroSection = () => {
       </div>
 
       <div className="px-4 md:px-0">
-        <div className="grid grid-cols-12 gap-x-8 gap-12 md:gap-2 items-center">
+        <div className="grid grid-cols-12 gap-x-8 gap-16 md:gap-2 items-center">
           <div
             ref={logoRef}
             className="col-span-12 md:col-span-3 md:col-start-1 flex justify-start"
@@ -224,7 +224,7 @@ const HeroSection = () => {
           <div className="col-span-12 md:col-span-11 md:col-start-3">
             <h1
               ref={titleRef}
-              className="text-foreground mb-12 text-[clamp(4rem,10vw,15rem)] leading-none tracking-[-0.04em]"
+              className="text-foreground md:mb-12 text-[clamp(4rem,10vw,15rem)] leading-none tracking-[-0.04em]"
             >
               {splitText("JORDAN")}
               <br />
@@ -246,9 +246,10 @@ const HeroSection = () => {
             </div>
 
             <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
-              Mobile-first software solutions engineered for modern businesses.
-              From concept to deployment, we architect systems that scale. You
-              don{"'"}t get a product, you get quality crafted with intent.
+              We{"'"}re your mobile-first solution provider. Native apps, web
+              platforms, backend systems—we build software that handles real
+              users and real growth. From concept to deployment, every line of
+              code is built to scale.
             </p>
           </div>
 
