@@ -177,7 +177,10 @@ const HeroSection = () => {
         <div className="absolute top-0 right-1/3 w-px h-full bg-foreground"></div>
       </div>
 
-      <div ref={jitRef} className="absolute top-8 right-0 md:right-30 px-6 pt-32 ">
+      <div
+        ref={jitRef}
+        className="absolute top-8 right-0 md:right-30 px-6 pt-32 "
+      >
         <svg
           width="80"
           height="180"

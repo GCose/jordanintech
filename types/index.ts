@@ -40,10 +40,15 @@ export interface LayoutProps {
 
 export interface NavigationProps {
     transparent?: boolean;
+    isReady?: boolean;
 }
 
 export interface SectionProps {
     children: ReactNode;
     className?: string;
     id?: string;
+}
+
+export interface LoadingScreenProps {
+    onComplete: () => void;
 }

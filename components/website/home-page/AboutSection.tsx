@@ -236,8 +236,7 @@ const AboutSection = () => {
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-foreground leading-relaxed">
                 We don{"'"}t chase trends. React Native because it delivers
                 native performance with a single codebase. Next.js because
-                server-side rendering matters for SEO and speed. Django when you
-                need a backend that scales without drama.
+                server-side rendering matters for SEO and speed.
               </p>
             </div>
 

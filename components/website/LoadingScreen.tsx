@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 interface LoadingScreenProps {
   onComplete: () => void;

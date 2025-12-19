@@ -13,9 +13,13 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
-      {isLoading && <LoadingScreen onComplete={function (): void {
-        throw new Error("Function not implemented.");
-      } } />}
+      {isLoading && (
+        <LoadingScreen
+          onComplete={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+      )}
       <Component {...pageProps} />
     </ReactLenis>
   );
