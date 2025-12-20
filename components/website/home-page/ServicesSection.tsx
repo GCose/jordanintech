@@ -243,7 +243,7 @@ const ServicesSection = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
     if (!isDesktop) return;
@@ -321,7 +321,7 @@ const ServicesSection = () => {
 
       <div
         ref={catchyTextRef}
-        className="absolute top-[50%] right-0 text-[clamp(15rem,35vw,35rem)] text-brand-primary/10 leading-none pointer-events-none select-none"
+        className="absolute top-[20%] md:top-[70%] right-0 text-[clamp(15rem,35vw,35rem)] text-brand-primary/10 leading-none pointer-events-none select-none"
       >
         FULL
         <br />
@@ -502,7 +502,10 @@ const ServicesSection = () => {
         ) : (
           <div ref={accordionContainerRef} className="space-y-12">
             {services.map((service, index) => (
-              <div key={service.id} className="border border-foreground/20 p-6">
+              <div
+                key={service.id}
+                className="border border-foreground/20 px-2 py-6"
+              >
                 <div className="flex items-start gap-6 mb-6">
                   <svg width="40" height="100" viewBox="0 0 40 100" fill="none">
                     <circle

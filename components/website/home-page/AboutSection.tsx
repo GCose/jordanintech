@@ -285,7 +285,7 @@ const AboutSection = () => {
 
           <div
             ref={approachRef}
-            className="col-span-12 md:col-span-6 md:col-start-8 md:row-start-3 flex flex-col justify-center space-y-6 pt-8 md:pt-120"
+            className="col-span-12 md:col-span-6 md:col-start-8 md:row-start-3 flex flex-col justify-center space-y-6 md:mb-20 pt-8 md:pt-120"
           >
             <div>
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-foreground leading-relaxed">
@@ -320,7 +320,7 @@ const AboutSection = () => {
 
           <div
             ref={statsRef}
-            className="col-span-12 md:col-span-6 md:col-start-7 md:row-start-4 flex flex-col justify-center gap-8 pt-4 md:pl-20 lg:pl-40  md:pt-80"
+            className="col-span-12 md:col-span-6 md:col-start-7 md:row-start-4 flex flex-col justify-center gap-8 pt-4  md:pt-80"
           >
             <div className="space-y-3 border-b border-foreground/10 pb-6">
               <div className="text-[clamp(2.5rem,5vw,4rem)] text-brand-primary leading-none">
