@@ -102,6 +102,8 @@ const ServicesSection = () => {
   }, []);
 
   useEffect(() => {
+    if (!isDesktop) return;
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -240,6 +242,34 @@ const ServicesSection = () => {
           });
         }
       });
+
+      const accordionTimeline = gsap.timeline();
+
+      services.forEach(() => {
+        accordionTimeline.to(
+          {},
+          {
+            duration: 1,
+          }
+        );
+      });
+
+      ScrollTrigger.create({
+        trigger: accordionContainerRef.current,
+        start: "center center",
+        end: `+=${services.length * 100}%`,
+        pin: true,
+        scrub: 1,
+        animation: accordionTimeline,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const newIndex = Math.min(
+            Math.floor(progress * services.length),
+            services.length - 1
+          );
+          setActiveIndex(newIndex);
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -301,12 +331,6 @@ const ServicesSection = () => {
     });
   }, [activeIndex, isDesktop]);
 
-  const handleAccordionClick = (index: number) => {
-    if (index !== activeIndex) {
-      setActiveIndex(index);
-    }
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -366,8 +390,7 @@ const ServicesSection = () => {
               {services.map((service, index) => (
                 <div
                   key={service.id}
-                  onClick={() => handleAccordionClick(index)}
-                  className={`relative cursor-pointer overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.45,0,0.15,1)] border ${
+                  className={`relative overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.45,0,0.15,1)] border ${
                     activeIndex === index
                       ? "col-span-8 border-brand-primary "
                       : "col-span-1 border-foreground/20 hover:border-brand-primary/50"
@@ -502,10 +525,7 @@ const ServicesSection = () => {
         ) : (
           <div ref={accordionContainerRef} className="space-y-12">
             {services.map((service, index) => (
-              <div
-                key={service.id}
-                className="border border-foreground/20 px-2 py-6"
-              >
+              <div key={service.id} className="border border-foreground/20 p-6">
                 <div className="flex items-start gap-6 mb-6">
                   <svg width="40" height="100" viewBox="0 0 40 100" fill="none">
                     <circle
