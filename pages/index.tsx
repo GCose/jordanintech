@@ -3,6 +3,7 @@ import Layout from "@/components/website/layouts/Layout";
 import HeroSection from "@/components/website/home-page/HeroSection";
 import AboutSection from "@/components/website/home-page/AboutSection";
 import ProjectsSection from "@/components/website/home-page/ProjectsSection";
+import ServicesSection from "@/components/website/home-page/ServicesSection";
 
 const Home = ({ isReady = false }: HomeProps) => {
   return (
@@ -17,6 +18,7 @@ const Home = ({ isReady = false }: HomeProps) => {
       <HeroSection isReady={isReady} />
       <AboutSection />
       <ProjectsSection />
+      <ServicesSection />
     </Layout>
   );
 };

@@ -77,7 +77,7 @@ const AboutSection = () => {
           duration: 1.2,
           ease: "power3.out",
         },
-        "+=0.5"
+        "-=0.5"
       )
         .from(
           approachRef.current,
@@ -87,7 +87,7 @@ const AboutSection = () => {
             duration: 1.2,
             ease: "power3.out",
           },
-          "+=0.4"
+          "-=0.4"
         )
         .from(
           image2Ref.current,
@@ -97,7 +97,7 @@ const AboutSection = () => {
             duration: 1.4,
             ease: "power3.out",
           },
-          "+=0.4"
+          "-=0.4"
         );
 
       if (statsRef.current) {
@@ -110,7 +110,7 @@ const AboutSection = () => {
             duration: 1,
             ease: "power2.out",
           },
-          "+=0.3"
+          "-=0.3"
         );
       }
 
@@ -126,7 +126,7 @@ const AboutSection = () => {
       });
 
       gsap.to(numberRef.current, {
-        yPercent: -40,
+        yPercent: -80,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -296,7 +296,7 @@ const AboutSection = () => {
             </div>
 
             <div className="pt-4 border-t border-foreground/10">
-              <p className="text-sm font-light text-grey-medium">
+              <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium">
                 Every technology choice is justified by engineering
                 requirements, not hype cycles.
               </p>
@@ -309,7 +309,7 @@ const AboutSection = () => {
           >
             <div className="relative aspect-4/3 w-full overflow-hidden">
               <Image
-                src="/images/home-page/hero.jpg"
+                src="/images/home-page/about.jpg"
                 alt="Process"
                 fill
                 className="object-cover"

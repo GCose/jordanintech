@@ -186,7 +186,10 @@ const HeroSection = ({ isReady = false }: HeroSectionProps) => {
       ref={containerRef}
       className="relative bg-background overflow-hidden min-h-screen md:pt-10 pb-12"
     >
-      <div ref={gridRef} className="absolute inset-0 pointer-events-none">
+      <div
+        ref={gridRef}
+        className="absolute inset-0 pointer-events-none"
+      >
         <div className="absolute top-0 left-1/3 w-px h-full bg-foreground"></div>
         <div className="absolute top-0 right-1/3 w-px h-full bg-foreground"></div>
       </div>

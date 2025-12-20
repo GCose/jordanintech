@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -9,22 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 1,
-    title: "GamCraft",
-    category: "Mobile Application",
-    location: "Banjul, GM",
-    year: "2024",
-    image: "/images/home-page/hero.jpg",
-  },
-  {
-    id: 2,
-    title: "Cribio",
-    category: "Mobile Application",
-    location: "Dakar, SN",
-    year: "2024",
-    image: "/images/home-page/hero.jpg",
-  },
-  {
-    id: 3,
     title: "Modem Pay Merchant Mobile",
     category: "Mobile Application",
     location: "Accra, GH",
@@ -32,12 +16,28 @@ const projects = [
     image: "/images/home-page/hero.jpg",
   },
   {
-    id: 4,
+    id: 2,
     title: "Trygg Backend",
     category: "System Architecture",
     location: "Lagos, NG",
     year: "2023",
-    image: "/images/home-page/hero.jpg",
+    image: "/images/home-page/hero-3.jpg",
+  },
+  {
+    id: 3,
+    title: "GamCraft",
+    category: "Mobile Application",
+    location: "Banjul, GM",
+    year: "2024",
+    image: "/images/home-page/about.jpg",
+  },
+  {
+    id: 4,
+    title: "Cribio",
+    category: "Mobile Application",
+    location: "Dakar, SN",
+    year: "2024",
+    image: "/images/home-page/about.jpeg",
   },
 ];
 
@@ -54,8 +54,22 @@ const ProjectsSection = () => {
   const dot1Ref = useRef<SVGCircleElement>(null);
   const dot2Ref = useRef<SVGCircleElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const ctx = gsap.context(() => {
       const cards = cardRefs.current.filter(Boolean);
 
@@ -161,7 +175,6 @@ const ProjectsSection = () => {
         duration: 1,
         ease: "power2.out",
         onUpdate: function () {
-          // Hide rope when scaling down (going backwards)
           if (ropeRef.current && dot1Ref.current && dot2Ref.current) {
             const progress = this.progress();
             const opacity = progress > 0.5 ? "1" : "0";
@@ -177,7 +190,6 @@ const ProjectsSection = () => {
           const nextCard = cards[index + 1];
           const cardAfterNext = cards[index + 2];
 
-          // Transition: Pull next card in
           masterTimeline.to(
             card,
             {
@@ -220,7 +232,6 @@ const ProjectsSection = () => {
             "<"
           );
 
-          // Reposition: Move rope to prepare for next pull
           if (cardAfterNext) {
             masterTimeline.to(
               {},
@@ -260,7 +271,6 @@ const ProjectsSection = () => {
         animation: masterTimeline,
       });
 
-      // Logo animation - visible only when cards container is pinned
       gsap.to(logoRef.current, {
         opacity: 1,
         scale: 1,
@@ -386,12 +396,14 @@ const ProjectsSection = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isDesktop]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-foreground text-background overflow-hidden min-h-[600vh]"
+      className={`relative bg-foreground text-background overflow-hidden ${
+        isDesktop ? "min-h-[600vh]" : "py-32"
+      }`}
     >
       <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
         <div className="absolute top-0 left-1/6 w-px h-full bg-background"></div>
@@ -441,7 +453,7 @@ const ProjectsSection = () => {
               </span>
             </h2>
 
-            <div className="flex items-center gap-6 pt-40 mt-8 md:mt-12 md:ml-10">
+            <div className="flex items-center gap-6 pt-40 mt-8 md:mt-12 md:ml-10 w-full">
               <div className="w-12 md:w-124 h-px bg-white/30 shrink-0"></div>
               <p
                 ref={descRef}
@@ -456,95 +468,138 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <div
-        ref={cardsContainerRef}
-        className="relative w-full flex flex-col items-start justify-start h-screen overflow-hidden mt-32 py-16 md:py-24"
-        style={{
-          perspective: 800,
-          perspectiveOrigin: "50% 50%",
-          transformStyle: "preserve-3d",
-        }}
-      >
+      {isDesktop ? (
         <div
-          ref={logoRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-0"
+          ref={cardsContainerRef}
+          className="relative w-full flex flex-col items-start justify-start h-screen overflow-hidden mt-32 py-16 md:py-24"
+          style={{
+            perspective: 800,
+            perspectiveOrigin: "50% 50%",
+            transformStyle: "preserve-3d",
+          }}
         >
-          <Image
-            src="/images/logo-2.png"
-            alt="JordanInTech Logo"
-            width={620}
-            height={620}
-            className="object-contain"
-          />
-        </div>
-
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-50"
-          style={{ overflow: "visible" }}
-        >
-          <path
-            ref={ropeRef}
-            d=""
-            stroke="#007bff"
-            strokeWidth="2"
-            fill="none"
-            opacity="0"
-            strokeLinecap="round"
-          />
-          <circle ref={dot1Ref} r="6" fill="#007bff" opacity="0" />
-          <circle ref={dot2Ref} r="6" fill="#007bff" opacity="0" />
-        </svg>
-
-        {projects.map((project, index) => (
           <div
-            key={project.id}
-            ref={(el) => {
-              cardRefs.current[index] = el;
-            }}
-            className="w-full"
-            style={{
-              transformStyle: "preserve-3d",
-            }}
+            ref={logoRef}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-0"
           >
-            <div className="grid grid-cols-12 gap-8">
-              <div className="col-span-8 col-start-3">
-                <Link
-                  href={`/work/${project.id}`}
-                  className="block group cursor-pointer"
-                >
-                  <div className="relative w-full aspect-16/10 overflow-hidden mb-8">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-transparent to-transparent"></div>
-                  </div>
-
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <h3 className="text-4xl md:text-6xl font-light text-background mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-lg text-grey-medium">
-                        {project.category}
-                      </p>
-                    </div>
-
-                    <div className="text-right">
-                      <p className="text-sm text-grey-medium mb-1">
-                        {project.location}
-                      </p>
-                      <p className="text-sm text-grey-medium">{project.year}</p>
-                    </div>
-                  </div>
-                </Link>
-              </div>
+            <div className="relative w-[clamp(250px,35vw,620px)] h-[clamp(250px,35vw,620px)]">
+              <Image
+                src="/images/logo-2.png"
+                alt="JordanInTech Logo"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
-        ))}
-      </div>
+
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none z-50"
+            style={{ overflow: "visible" }}
+          >
+            <path
+              ref={ropeRef}
+              d=""
+              stroke="#007bff"
+              strokeWidth="2"
+              fill="none"
+              opacity="0"
+              strokeLinecap="round"
+            />
+            <circle ref={dot1Ref} r="6" fill="#007bff" opacity="0" />
+            <circle ref={dot2Ref} r="6" fill="#007bff" opacity="0" />
+          </svg>
+
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
+              className="w-full"
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <div className="grid grid-cols-12 gap-8">
+                <div className="col-span-8 col-start-3">
+                  <Link
+                    href={`/work/${project.id}`}
+                    className="block group cursor-pointer"
+                  >
+                    <div className="relative w-full aspect-16/10 overflow-hidden mb-8">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <h3 className="text-4xl md:text-6xl font-light text-background mb-2">
+                          {project.title}
+                        </h3>
+                        <p className="text-lg text-grey-medium">
+                          {project.category}
+                        </p>
+                      </div>
+
+                      <div className="text-right">
+                        <p className="text-sm text-grey-medium mb-1">
+                          {project.location}
+                        </p>
+                        <p className="text-sm text-grey-medium">
+                          {project.year}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="relative w-full mt-32 px-4 space-y-16">
+          {projects.map((project) => (
+            <div key={project.id} className="w-full">
+              <Link
+                href={`/work/${project.id}`}
+                className="block group cursor-pointer"
+              >
+                <div className="relative w-full aspect-16/10 overflow-hidden mb-8">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-transparent to-transparent"></div>
+                </div>
+
+                <div className="flex items-end justify-between">
+                  <div>
+                    <h3 className="text-4xl font-light text-background mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-lg text-grey-medium">
+                      {project.category}
+                    </p>
+                  </div>
+
+                  <div className="text-right">
+                    <p className="text-sm text-grey-medium mb-1">
+                      {project.location}
+                    </p>
+                    <p className="text-sm text-grey-medium">{project.year}</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
