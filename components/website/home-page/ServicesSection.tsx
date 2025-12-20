@@ -35,7 +35,7 @@ const services = [
     id: 3,
     title: "Backend Systems",
     description:
-      "Infrastructure that grows with you. We architect systems that handle 10 users today and 10,000 tomorrow without breaking. No rewrites, no downtime, no panic when you go viral.",
+      "Infrastructure that grows with your business. Today you have 10 users, next month it could be 10,000. We build backends that scale with you—no breaking, no rebuilding from scratch. Your app stays fast, your data stays secure, and you sleep well at night. When your product takes off, your infrastructure keeps up.",
     features: [
       "Scales to millions of requests",
       "99.9% uptime guarantee",
@@ -367,9 +367,9 @@ const ServicesSection = () => {
                 <div
                   key={service.id}
                   onClick={() => handleAccordionClick(index)}
-                  className={`relative cursor-pointer overflow-hidden transition-all duration-2000 ease-[cubic-bezier(0.45,0,0.15,1)] border ${
+                  className={`relative cursor-pointer overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.45,0,0.15,1)] border ${
                     activeIndex === index
-                      ? "col-span-8 border-brand-primary/50"
+                      ? "col-span-8 border-brand-primary "
                       : "col-span-1 border-foreground/20 hover:border-brand-primary/50"
                   }`}
                 >
@@ -412,7 +412,7 @@ const ServicesSection = () => {
                         />
                       </svg>
                       <h3
-                        className="text-xl font-medium tracking-wider uppercase text-foreground"
+                        className="text-[clamp(1.1rem,2vw,1.6rem)] font-medium tracking-wider uppercase text-foreground"
                         style={{
                           writingMode: "vertical-rl",
                           textOrientation: "mixed",
@@ -466,7 +466,7 @@ const ServicesSection = () => {
 
                         <div className="flex-1">
                           <h3
-                            className={`accordion-title-${index} text-4xl md:text-5xl font-light text-foreground mb-6`}
+                            className={`accordion-title-${index} text-4xl md:text-5xl uppercase font-light text-foreground mb-6`}
                           >
                             {splitTextIntoWords(service.title)}
                           </h3>
