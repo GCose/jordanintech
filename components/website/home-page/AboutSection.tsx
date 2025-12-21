@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, forwardRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AboutSection = () => {
+const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const containerRef = useRef<HTMLElement>(null);
   const numberRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -208,7 +208,14 @@ const AboutSection = () => {
 
   return (
     <section
-      ref={containerRef}
+      ref={(node) => {
+        containerRef.current = node;
+        if (typeof ref === "function") {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+      }}
       className="relative bg-background text-foreground overflow-hidden py-[clamp(8rem,20vh,10rem)]"
     >
       <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
@@ -356,6 +363,8 @@ const AboutSection = () => {
       </div>
     </section>
   );
-};
+});
+
+AboutSection.displayName = "AboutSection";
 
 export default AboutSection;
