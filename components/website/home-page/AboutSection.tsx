@@ -272,7 +272,7 @@ const AboutSection = () => {
 
             <div className="flex items-start gap-4 pt-4 border-t border-foreground/10">
               <span className="text-[3rem] text-brand-primary leading-none">
-                5+
+                3+
               </span>
               <div className="pt-2">
                 <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium">
@@ -324,7 +324,7 @@ const AboutSection = () => {
           >
             <div className="space-y-3 border-b border-foreground/10 pb-6">
               <div className="text-[clamp(2.5rem,5vw,4rem)] text-brand-primary leading-none">
-                50+
+                15+
               </div>
               <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium tracking-wide">
                 Projects delivered from MVP to production scale
