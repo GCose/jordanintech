@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import LaptopScene from "../models/LaptopScene";
 import { useEffect, useRef, forwardRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -312,7 +313,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
 
           <div
             ref={laptopModel}
-            className="col-span-12 md:col-span-7 md:col-start-1 md:row-start-4"
+            className="col-span-12 md:col-span-6 md:col-start-1 md:row-start-4"
           >
             <div className="relative aspect-4/3 w-full md:pt-14">
               <LaptopScene />
@@ -352,6 +353,31 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
                 Kairaba Avenue, Banjul • The Gambia
               </p>
             </div>
+          </div>
+
+          <div className="col-span-12 md:col-span-10 md:col-start-2 md:row-start-5 text-center">
+            <Link
+              href="/work"
+              className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-brand-primary"
+            >
+              <span className="relative z-10">
+                Let{"'"}s build your solution now
+              </span>
+              <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
+              <svg
+                className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

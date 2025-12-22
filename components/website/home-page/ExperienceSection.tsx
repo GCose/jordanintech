@@ -137,9 +137,9 @@ const ExperienceSection = () => {
               ref={titleRef}
               className="text-[clamp(3.5rem,8vw,10rem)] leading-[1.05] tracking-[-0.04em] uppercase"
             >
-              <span className="title-word block origin-bottom">Proven In</span>
+              <span className="title-word block origin-bottom">We Know</span>
               <span className="title-word block pl-4 md:pl-50 lg:pl-100 origin-bottom">
-                The Field
+                What Works
               </span>
             </h2>
           </div>
@@ -166,17 +166,17 @@ const ExperienceSection = () => {
                 ref={descRef}
                 className="text-[clamp(1.5rem,2vw,2.5rem)] font-light leading-relaxed mb-16"
               >
-                Before founding JordanInTech, Jordan built production systems
-                and shipped features at two leading tech companies across West
-                Africa. From payment infrastructure to agency work, he brings
-                real-world experience to every project.
+                Before founding JordanInTech, Jordan built production systems at
+                ModemPay and NextGen Agency. Payment infrastructure handling
+                real money. Client projects across West Africa. He knows what
+                breaks at scale—and how to prevent it.
               </p>
 
               <div
                 ref={logosRef}
                 className="flex items-center gap-12 md:gap-16"
               >
-                <div className="relative h-24 w-48 md:h-32 md:w-64 transition-all duration-500">
+                <div className="relative h-24 w-48 md:h-32 md:w-64 transition-all duration-500 mt-5">
                   <Image
                     src="/images/home-page/modempay.png"
                     alt="ModemPay"

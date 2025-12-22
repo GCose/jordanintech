@@ -203,9 +203,10 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
               </div>
 
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
-                Native apps, web platforms, backend systems—we build software
-                that handles real users and real growth. From concept to
-                deployment, every line of code is built to scale.
+                We build production-grade, perfomant software for businesses
+                that can{"'"}t afford downtime. Mobile apps, web platforms,
+                backend systems— architected to handle growth, not just on launch
+                day.
               </p>
             </div>
 
@@ -217,7 +218,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
                 href="/work"
                 className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-brand-primary"
               >
-                <span className="relative z-10">Explore Our Work</span>
+                <span className="relative z-10">Let{"'"}s build together</span>
                 <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
                 <svg
                   className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"

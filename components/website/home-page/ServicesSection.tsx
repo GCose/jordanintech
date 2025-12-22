@@ -385,12 +385,12 @@ const ServicesSection = () => {
           <div className="grid grid-cols-12 gap-4 ">
             <div
               ref={accordionContainerRef}
-              className="col-span-12 md:col-span-12 grid grid-cols-12 gap-4 h-[700px]"
+              className="col-span-12 md:col-span-12 grid grid-cols-12 gap-4 h-[700px] items-center"
             >
               {services.map((service, index) => (
                 <div
                   key={service.id}
-                  className={`relative overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.45,0,0.15,1)] border ${
+                  className={`relative overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.45,0,0.15,1)] border h-full ${
                     activeIndex === index
                       ? "col-span-8 border-brand-primary "
                       : "col-span-1 border-foreground/20 hover:border-brand-primary/50"
