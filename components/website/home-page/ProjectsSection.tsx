@@ -414,7 +414,7 @@ const ProjectsSection = () => {
 
       <div
         ref={numberRef}
-        className="absolute top-[5%] right-0 text-[clamp(15rem,35vw,40rem)] text-brand-primary/10 leading-none pointer-events-none select-none"
+        className="absolute top-[5%] right-0 text-[clamp(15rem,35vw,40rem)] text-brand-primary/30 leading-none pointer-events-none select-none"
       >
         04
       </div>

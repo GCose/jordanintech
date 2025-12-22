@@ -1,9 +1,9 @@
 import { gsap } from "gsap";
 import Link from "next/link";
 import Image from "next/image";
+import { HeroSectionProps } from "@/types";
 import { useEffect, useRef, forwardRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { HeroSectionProps } from "@/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +20,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
     useEffect(() => {
       gsap.set(gridRef.current, { opacity: 0 });
       gsap.set(logoRef.current, { opacity: 0, y: -50 });
-      gsap.set(jordanImageRef.current, { opacity: 0, scale: 0.2 });
+      gsap.set(jordanImageRef.current, { opacity: 0, y: 400 });
       gsap.set(subtitleRef.current, { opacity: 0, x: -100 });
       gsap.set(ctaRef.current, { opacity: 0, scale: 0.8 });
 
@@ -64,7 +64,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
 
         gsap.to(jordanImageRef.current, {
           opacity: 1,
-          scale: 1,
+          y: 0,
           duration: 1.5,
           ease: "power3.out",
           delay: 2.5,
@@ -75,7 +75,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
           x: 0,
           duration: 0.8,
           ease: "power3.out",
-          delay: 5,
+          delay: 3.5,
         });
 
         gsap.to(ctaRef.current, {
@@ -83,7 +83,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
           scale: 1,
           duration: 0.7,
           ease: "back.out(1.7)",
-          delay: 6.2,
+          delay: 4,
         });
 
         gsap.to(titleRef.current, {

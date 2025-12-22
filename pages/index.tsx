@@ -232,7 +232,7 @@ const Home = ({ isReady = false }: HomeProps) => {
       canonicalUrl="https://jordanintech.com"
       isReady={isReady}
     >
-      <div ref={svgRef} className="fixed top-0 left-0 z-50 pointer-events-none">
+      <div ref={svgRef} className="fixed top-0 left-0 z-1 pointer-events-none">
         <svg
           width="80"
           height="180"

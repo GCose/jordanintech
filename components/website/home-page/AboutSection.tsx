@@ -1,6 +1,6 @@
-import { useEffect, useRef, forwardRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
+import LaptopScene from "../models/LaptopScene";
+import { useEffect, useRef, forwardRef } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,7 +9,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
   const containerRef = useRef<HTMLElement>(null);
   const numberRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const image2Ref = useRef<HTMLDivElement>(null);
+  const laptopModel = useRef<HTMLDivElement>(null);
   const textBlockRef = useRef<HTMLDivElement>(null);
   const approachRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
@@ -65,7 +65,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
             duration: 1.4,
             ease: "power4.out",
           },
-          "-=0.4"
+          "-=1.4"
         );
       }
 
@@ -90,7 +90,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
           "-=0.4"
         )
         .from(
-          image2Ref.current,
+          laptopModel.current,
           {
             opacity: 0,
             scale: 0.85,
@@ -114,8 +114,8 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
         );
       }
 
-      gsap.to(image2Ref.current, {
-        yPercent: 15,
+      gsap.to(laptopModel.current, {
+        yPercent: -50,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -311,17 +311,11 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
           </div>
 
           <div
-            ref={image2Ref}
+            ref={laptopModel}
             className="col-span-12 md:col-span-7 md:col-start-1 md:row-start-4"
           >
-            <div className="relative aspect-4/3 w-full overflow-hidden">
-              <Image
-                src="/images/home-page/about.jpg"
-                alt="Process"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent"></div>
+            <div className="relative aspect-4/3 w-full md:pt-14">
+              <LaptopScene />
             </div>
           </div>
 
