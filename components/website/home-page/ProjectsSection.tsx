@@ -480,7 +480,7 @@ const ProjectsSection = () => {
         >
           <div
             ref={logoRef}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-0"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 z-0"
           >
             <div className="relative w-[clamp(250px,35vw,620px)] h-[clamp(250px,35vw,620px)]">
               <Image
@@ -526,7 +526,7 @@ const ProjectsSection = () => {
                     href={`/work/${project.id}`}
                     className="block group cursor-pointer"
                   >
-                    <div className="relative w-full aspect-16/10 overflow-hidden mb-8">
+                    <div className="relative w-full aspect-16/10 overflow-hidden mb-8 z-10">
                       <Image
                         src={project.image}
                         alt={project.title}
