@@ -115,7 +115,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
       }
 
       gsap.to(laptopModel.current, {
-        yPercent: -50,
+        yPercent: 15,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
