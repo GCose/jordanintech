@@ -167,7 +167,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
               ref={logoRef}
               className="col-span-12 md:col-span-3 md:col-start-1 flex justify-start"
             >
-              <div className="relative w-50 h-70 md:w-46 md:h-46 border">
+              <div className="relative w-50 h-70 md:w-46 md:h-46 md:border">
                 <Image
                   fill
                   priority
