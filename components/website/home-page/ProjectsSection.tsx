@@ -12,7 +12,7 @@ const projects = [
     title: "Modem Pay Merchant Mobile",
     category: "Mobile Application",
     year: "2023",
-    image: "/images/home-page/hero.jpg",
+    image: "/images/home-page/modempayapp.png",
     storeLinks: {
       playStore:
         "https://play.google.com/store/apps/details?id=com.modempay.modempaymerchant",
@@ -22,9 +22,9 @@ const projects = [
   {
     id: 2,
     title: "Trygg Backend",
-    category: "System Architecture",
+    category: "Systems Design & Development",
     year: "2023",
-    image: "/images/home-page/hero-3.jpg",
+    image: "/images/home-page/trygg.png",
     storeLinks: {
       playStore:
         "https://play.google.com/store/apps/details?id=com.trygg.driver",
@@ -44,7 +44,7 @@ const projects = [
     title: "Cribio",
     category: "Mobile Application",
     year: "2024",
-    image: "/images/home-page/about.jpeg",
+    image: "/images/home-page/cribio.png",
     storeLinks: null,
   },
 ];
@@ -522,7 +522,7 @@ const ProjectsSection = () => {
                 <div className="col-span-8 col-start-3">
                   <div className="block group cursor-pointer">
                     <Link href={`/work/${project.id}`}>
-                      <div className="relative w-full aspect-video overflow-hidden mb-8 z-10 border">
+                      <div className="relative w-full aspect-video overflow-hidden mb-8 z-10">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -544,26 +544,37 @@ const ProjectsSection = () => {
                         </div>
                       </Link>
 
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-4 relative z-20">
                         {project.storeLinks ? (
                           <>
-                            <a
+                            <Link
                               href={project.storeLinks.playStore}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                              className="transition-transform duration-300 hover:scale-105"
                             >
-                              Play Store
-                            </a>
-                            <span className="text-grey-medium">•</span>
-                            <a
+                              <Image
+                                src="/images/playstore.svg"
+                                alt="Download on Google Play"
+                                width={120}
+                                height={40}
+                                className="h-10 w-auto"
+                              />
+                            </Link>
+                            <Link
                               href={project.storeLinks.appStore}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                              className="transition-transform duration-300 hover:scale-105"
                             >
-                              App Store
-                            </a>
+                              <Image
+                                src="/images/appstore.svg"
+                                alt="Download on the App Store"
+                                width={120}
+                                height={40}
+                                className="h-10 w-auto"
+                              />
+                            </Link>
                           </>
                         ) : (
                           <p className="text-sm text-grey-medium">
@@ -607,25 +618,37 @@ const ProjectsSection = () => {
                     </div>
                   </Link>
 
-                  <div className="flex flex-col items-end gap-1">
+                  <div className="flex flex-col items-end gap-2 relative z-20">
                     {project.storeLinks ? (
                       <>
-                        <a
+                        <Link
                           href={project.storeLinks.playStore}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                          className="transition-transform duration-300 hover:scale-105"
                         >
-                          Play Store
-                        </a>
-                        <a
+                          <Image
+                            src="/images/playstore.svg"
+                            alt="Download on Google Play"
+                            width={120}
+                            height={40}
+                            className="h-10 w-auto"
+                          />
+                        </Link>
+                        <Link
                           href={project.storeLinks.appStore}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                          className="transition-transform duration-300 hover:scale-105"
                         >
-                          App Store
-                        </a>
+                          <Image
+                            src="/images/appstore.svg"
+                            alt="Download on the App Store"
+                            width={120}
+                            height={40}
+                            className="h-10 w-auto"
+                          />
+                        </Link>
                       </>
                     ) : (
                       <p className="text-sm text-grey-medium">{project.year}</p>
