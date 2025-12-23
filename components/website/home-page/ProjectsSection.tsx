@@ -15,7 +15,7 @@ const projects = [
     image: "/images/home-page/hero.jpg",
     storeLinks: {
       playStore:
-        "https://play.google.com/store/apps/details?id=com.modempay.merchant",
+        "https://play.google.com/store/apps/details?id=com.modempay.modempaymerchant&pcampaignid=web_share",
       appStore: "https://apps.apple.com/app/modempay-merchant/id123456789",
     },
   },
@@ -26,7 +26,8 @@ const projects = [
     year: "2023",
     image: "/images/home-page/hero-3.jpg",
     storeLinks: {
-      playStore: "https://play.google.com/store/apps/details?id=com.trygg",
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.trygg.driver&pcampaignid=web_share",
       appStore: "https://apps.apple.com/app/trygg/id123456789",
     },
   },
@@ -521,7 +522,7 @@ const ProjectsSection = () => {
                 <div className="col-span-8 col-start-3">
                   <div className="block group cursor-pointer">
                     <Link href={`/work/${project.id}`}>
-                      <div className="relative w-full aspect-video overflow-hidden mb-8 z-10">
+                      <div className="relative w-full aspect-video overflow-hidden mb-8 z-10 border">
                         <Image
                           src={project.image}
                           alt={project.title}
