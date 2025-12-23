@@ -145,7 +145,7 @@ const Footer = () => {
                 href="/work"
                 className="text-xs md:text-sm font-medium tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
               >
-                Work
+                Home
               </Link>
               <Link
                 href="/about"
@@ -154,10 +154,10 @@ const Footer = () => {
                 About
               </Link>
               <Link
-                href="/services"
+                href="/work"
                 className="text-xs md:text-sm font-medium tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
               >
-                Services
+                Work
               </Link>
               <Link
                 href="/contact"
@@ -168,12 +168,12 @@ const Footer = () => {
             </div>
 
             <div ref={emailRef}>
-              <a
-                href="mailto:contact@jordanintech.com"
+              <Link
+                href="mailto:info@jordanintech.com"
                 className="text-xs md:text-sm font-medium tracking-wider text-foreground hover:text-brand-primary transition-colors duration-300"
               >
-                contact@jordanintech.com
-              </a>
+                info@jordanintech.com
+              </Link>
             </div>
           </div>
 

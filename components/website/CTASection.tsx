@@ -13,7 +13,7 @@ const CTASection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const ctaButtonRef = useRef<HTMLAnchorElement>(null);
+  const ctaButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -132,7 +132,7 @@ const CTASection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-foreground text-background overflow-hidden pb-[clamp(8rem,20vh,12rem)]"
+      className="relative bg-foreground text-background overflow-hidden py-[clamp(8rem,20vh,12rem)]"
     >
       <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
         <div className="absolute top-0 left-1/6 w-px h-full bg-background"></div>
@@ -181,26 +181,27 @@ const CTASection = () => {
             </p>
 
             <div className="flex flex-col md:flex-row items-start gap-6 md:ml-50 lg:ml-100">
-              <Link
-                ref={ctaButtonRef}
-                href="/contact"
-                className="group inline-flex items-center gap-4 text-base font-medium tracking-widest text-background uppercase transition-all duration-500 hover:text-brand-primary"
-              >
-                <span>Book a Strategy Call</span>
-                <div className="w-16 h-0.5 bg-background transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
-                <svg
-                  className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <Link href="/contact">
+                <div
+                  ref={ctaButtonRef}
+                  className="group inline-flex items-center gap-4 text-base font-medium tracking-widest text-background uppercase transition-all duration-500 hover:text-brand-primary cursor-pointer"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
+                  <span>Book a Strategy Call</span>
+                  <div className="w-16 h-0.5 bg-background transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
+                  <svg
+                    className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </div>
               </Link>
             </div>
           </div>
