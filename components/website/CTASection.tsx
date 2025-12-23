@@ -59,11 +59,12 @@ const CTASection = () => {
         "-=0.5"
       );
 
-      tl.from(
+      tl.fromTo(
         ctaButtonRef.current,
+        { opacity: 0, x: -60 },
         {
-          opacity: 0,
-          x: -60,
+          opacity: 1,
+          x: 0,
           duration: 1,
           ease: "power3.out",
         },
@@ -212,7 +213,7 @@ const CTASection = () => {
           >
             <div className="relative w-full h-screen">
               <Image
-                src="/images/home-page/jordan-hero-2.png"
+                src="/images/cta.png"
                 alt="Jordan Nwabuike"
                 fill
                 className="object-contain object-center"
