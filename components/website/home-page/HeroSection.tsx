@@ -150,7 +150,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
 
         <div
           ref={jordanImageRef}
-          className="hidden md:block absolute top-[7%] -right-147 w-full h-screen pointer-events-none z-0"
+          className="block absolute top-[7%] lg:-right-147 w-full h-screen pointer-events-none z-0"
         >
           <Image
             src="/images/home-page/jordan-hero-2.png"
@@ -171,14 +171,14 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
                 <Image
                   fill
                   priority
-                  src="/images/logo.jpg"
+                  src="/images/logo-2.png"
                   alt="JordanInTech Logo"
                   className="object-contain"
                 />
               </div>
             </div>
 
-            <div className="col-span-12 md:col-span-11 md:col-start-3">
+            <div className="col-span-12 md:col-span-11 md:col-start-3 bg-white/60 py-8 md:py-0 md:bg-transparent">
               <h1
                 ref={titleRef}
                 className="text-foreground md:mb-12 text-[clamp(4rem,10vw,15rem)] leading-none tracking-[-0.04em]"
@@ -193,7 +193,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
 
             <div
               ref={subtitleRef}
-              className="col-span-12 md:col-span-7 md:col-start-2 md:space-y-26 lg:space-y-16"
+              className="col-span-12 md:col-span-7 md:col-start-2 md:space-y-26 lg:space-y-16 bg-white/60 py-8 md:py-0 md:bg-transparent"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-16 h-0.5 bg-brand-primary"></div>
@@ -205,8 +205,8 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
                 We build production-grade, perfomant software for businesses
                 that can{"'"}t afford downtime. Mobile apps, web platforms,
-                backend systems— architected to handle growth, not just on launch
-                day.
+                backend systems— architected to handle growth, not just on
+                launch day.
               </p>
             </div>
 

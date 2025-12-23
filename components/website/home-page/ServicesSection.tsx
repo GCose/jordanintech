@@ -337,10 +337,10 @@ const ServicesSection = () => {
       className="relative bg-background text-foreground overflow-hidden py-[clamp(8rem,20vh,12rem)]"
     >
       <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
-        <div className="absolute top-0 left-1/6 w-px h-full bg-foreground"></div>
+        {/* <div className="absolute top-0 left-1/6 w-px h-full bg-foreground"></div> */}
         <div className="absolute top-0 left-1/3 w-px h-full bg-foreground"></div>
         <div className="absolute top-0 left-2/3 w-px h-full bg-foreground"></div>
-        <div className="absolute top-0 left-5/6 w-px h-full bg-foreground"></div>
+        {/* <div className="absolute top-0 left-5/6 w-px h-full bg-foreground"></div> */}
       </div>
 
       <div

@@ -5,7 +5,7 @@ import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 const LaptopScene = () => {
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full md:h-screen">
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 10, 7]} />
         <ambientLight intensity={0.5} />

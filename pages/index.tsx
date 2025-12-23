@@ -8,6 +8,7 @@ import AboutSection from "@/components/website/home-page/AboutSection";
 import ProjectsSection from "@/components/website/home-page/ProjectsSection";
 import ServicesSection from "@/components/website/home-page/ServicesSection";
 import ExperienceSection from "@/components/website/home-page/ExperienceSection";
+import CTASection from "@/components/website/CTASection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,7 @@ const Home = ({ isReady = false }: HomeProps) => {
   const projectsRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -218,6 +220,21 @@ const Home = ({ isReady = false }: HomeProps) => {
         ease: "power2.inOut",
         duration: 0.15,
       });
+
+      const ctaTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 2,
+        },
+      });
+
+      ctaTL.to(svg, {
+        x: window.innerWidth / 2 - 40,
+        y: window.innerHeight / 2 - 90,
+        ease: "power2.inOut",
+      });
     }, svgRef);
 
     return () => ctx.revert();
@@ -226,7 +243,7 @@ const Home = ({ isReady = false }: HomeProps) => {
   return (
     <Layout
       title="JordanInTech | Mobile-First Software Solutions"
-      description="We build robust mobile and web applications with expertise in system architecture and database design. From concept to deployment, we craft scalable solutions that work."
+      description="We build production-grade software for businesses that can't afford downtime. Mobile apps, web platforms, backend systems—architected to handle growth, not just launch day."
       keywords="software development, mobile apps, web applications, React Native, Next.js, Django, system architecture, database design, The Gambia, Kairaba Avenue"
       ogImage="/images/og-home.jpg"
       canonicalUrl="https://jordanintech.com"
@@ -276,6 +293,9 @@ const Home = ({ isReady = false }: HomeProps) => {
       </div>
       <div ref={experienceRef}>
         <ExperienceSection />
+      </div>
+      <div ref={ctaRef}>
+        <CTASection />
       </div>
     </Layout>
   );

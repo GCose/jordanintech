@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "./Footer";
 import { LayoutProps } from "@/types";
 import Navigation from "@/components/website/layouts/Navigation";
 
@@ -74,6 +75,7 @@ const Layout = ({
       <div className="relative min-h-screen bg-background">
         <Navigation isReady={isReady} />
         <main className="relative">{children}</main>
+        <Footer />
       </div>
     </>
   );
