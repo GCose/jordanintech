@@ -635,9 +635,9 @@ const ProjectsSection = () => {
                           />
                         </Link>
                         <Link
-                          href={project.storeLinks.appStore}
                           target="_blank"
                           rel="noopener noreferrer"
+                          href={project.storeLinks.appStore}
                           className="transition-transform duration-300 hover:scale-105"
                         >
                           <Image
