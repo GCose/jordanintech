@@ -15,7 +15,7 @@ const projects = [
     image: "/images/home-page/hero.jpg",
     storeLinks: {
       playStore:
-        "https://play.google.com/store/apps/details?id=com.modempay.modempaymerchant&pcampaignid=web_share",
+        "https://play.google.com/store/apps/details?id=com.modempay.modempaymerchant",
       appStore: "https://apps.apple.com/app/modempay-merchant/id123456789",
     },
   },
@@ -27,8 +27,8 @@ const projects = [
     image: "/images/home-page/hero-3.jpg",
     storeLinks: {
       playStore:
-        "https://play.google.com/store/apps/details?id=com.trygg.driver&pcampaignid=web_share",
-      appStore: "https://apps.apple.com/app/trygg/id123456789",
+        "https://play.google.com/store/apps/details?id=com.trygg.driver",
+      appStore: "https://apps.apple.com/gm/app/trygg-taxi/id6754839347",
     },
   },
   {
