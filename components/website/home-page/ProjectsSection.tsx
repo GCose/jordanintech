@@ -451,8 +451,8 @@ const ProjectsSection = () => {
               </span>
             </h2>
 
-            <div className="flex items-center gap-6 pt-40 mt-8 md:mt-12 md:ml-10 w-full">
-              <div className="w-12 md:w-124 h-px bg-white/30 shrink-0"></div>
+            <div className="flex items-center gap-6 pt-10 md:pt-40 mt-8 md:mt-12 md:ml-10 w-full">
+              <div className="w-0 md:w-124 h-px bg-white/30 shrink-0"></div>
               <p
                 ref={descRef}
                 className="text-[clamp(1.5rem,2vw,2.5rem)] w-full font-light text-background leading-relaxed "

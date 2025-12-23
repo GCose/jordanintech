@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -434,7 +435,7 @@ const ServicesSection = () => {
                   </div>
 
                   <div
-                    className={`absolute inset-0 p-4 md:p-8 flex flex-col justify-between transition-opacity duration-700 ${
+                    className={`absolute inset-0 p-8 flex flex-col justify-between transition-opacity duration-700 ${
                       activeIndex === index
                         ? "opacity-100"
                         : "opacity-0 pointer-events-none"
@@ -510,10 +511,13 @@ const ServicesSection = () => {
             </div>
           </div>
         ) : (
-          <div ref={accordionContainerRef} className="space-y-12">
+          <div ref={accordionContainerRef} className="space-y-20">
             {services.map((service, index) => (
-              <div key={service.id} className="border border-foreground/20 p-6">
-                <div className="flex items-start gap-6 mb-6">
+              <div
+                key={service.id}
+                className="border border-foreground/20 py-6 px-1"
+              >
+                <div className="flex items-start mb-6">
                   <svg width="40" height="100" viewBox="0 0 40 100" fill="none">
                     <circle
                       className={`collapsed-dot1-${index}`}
@@ -548,7 +552,7 @@ const ServicesSection = () => {
                       {service.description}
                     </p>
 
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                       {service.features.map((feature, idx) => (
                         <div
                           key={idx}
@@ -565,6 +569,28 @@ const ServicesSection = () => {
             ))}
           </div>
         )}
+        <div className="col-span-12 md:col-span-6 md:col-start-3 flex items-center gap-8 mt-12">
+          <Link
+            href="/work"
+            className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-brand-primary"
+          >
+            <span className="relative z-10">Let{"'"}s build together</span>
+            <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
+            <svg
+              className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );
