@@ -207,7 +207,7 @@ const Footer = () => {
           <div className="col-span-12 flex items-center justify-between md:mt-30 pt-6 border-t border-foreground/10">
             <div ref={copyrightRef}>
               <p className="text-clamp[1.1rem,3vw,1.3rem] font-light text-grey-medium tracking-wide">
-                © 2025 JordanInTech. All Rights Reserved
+                © 2025 Jordan In Tech. All Rights Reserved
               </p>
             </div>
 

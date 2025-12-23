@@ -164,10 +164,10 @@ const ExperienceSection = () => {
                 ref={descRef}
                 className="text-[clamp(1.5rem,2vw,2.5rem)] font-light leading-relaxed mb-16"
               >
-                Before founding JordanInTech, Jordan built production systems at
-                ModemPay and NextGen Agency. Payment infrastructure handling
-                real money. Client projects across West Africa. He knows what
-                breaks at scale—and how to prevent it.
+                Before founding Jordan In Tech, Jordan built production systems
+                at Modem Pay and NextGen Agency. Payment infrastructure handling
+                real money. Client projects across West Africa and Sweden. He knows what
+                breaks at scale, and how to prevent it.
               </p>
 
               <div

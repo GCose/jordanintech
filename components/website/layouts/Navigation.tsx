@@ -22,7 +22,8 @@ const Navigation = ({
   const navItems = [
     { label: "Work", href: "/work", index: "01" },
     { label: "About", href: "/about", index: "02" },
-    { label: "Contact", href: "/contact", index: "03" },
+    { label: "Team", href: "/team", index: "03" },
+    { label: "Contact", href: "/contact", index: "04" },
   ];
 
   useEffect(() => {

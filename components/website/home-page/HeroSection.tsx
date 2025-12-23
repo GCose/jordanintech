@@ -203,9 +203,9 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
               </div>
 
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
-                We build production-grade, perfomant software for businesses
+                We build production-grade, performant software for businesses
                 that can{"'"}t afford downtime. Mobile apps, web platforms,
-                backend systems— architected to handle growth, not just on
+                backend systems—architected to handle growth, not just on
                 launch day.
               </p>
             </div>

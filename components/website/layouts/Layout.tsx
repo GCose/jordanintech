@@ -12,13 +12,13 @@ const Layout = ({
   canonicalUrl = "https://jordanintech.com",
   isReady = false,
 }: LayoutProps) => {
-  const siteName = "JordanInTech";
+  const siteName = "Jordan In Tech";
   const fullTitle = `${title} | ${siteName}`;
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "JordanInTech",
+    name: "Jordan In Tech",
     url: canonicalUrl,
     logo: `${canonicalUrl}/images/logo.jpg`,
     description: description,

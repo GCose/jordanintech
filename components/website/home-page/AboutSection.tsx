@@ -242,7 +242,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
             <div className="flex items-center gap-3">
               <div className="w-8 h-px bg-brand-primary"></div>
               <span className="text-[0.625rem] font-medium tracking-[0.3em] text-brand-primary uppercase">
-                About Us
+                Our Approach
               </span>
             </div>
           </div>
@@ -274,8 +274,8 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
           >
             <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-foreground leading-relaxed">
               Most companies ship features. We ship systems that last. Every
-              decision—from database schema to API design—is made thinking five
-              years ahead, not five sprints.
+              decision, from database schema to API design, is made thinking
+              five years ahead, not five sprints.
             </p>
 
             <div className="flex items-start gap-4 pt-4 border-t border-foreground/10">
@@ -298,7 +298,7 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
             <div>
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-foreground leading-relaxed">
                 We don{"'"}t chase trends. React Native because it delivers
-                native performance with a single codebase. Next.js because
+                near-native performance with a single codebase. Next.js because
                 server-side rendering matters for SEO and speed.
               </p>
             </div>
@@ -326,10 +326,10 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
           >
             <div className="space-y-3 border-b border-foreground/10 pb-6">
               <div className="text-[clamp(2.5rem,5vw,4rem)] text-brand-primary leading-none">
-                15+
+                6+
               </div>
               <p className="text-[clamp(1.1rem,2vw,1.2rem)] font-light text-grey-medium tracking-wide">
-                Projects delivered from MVP to production scale
+                Projects delivered from MVP to production scale.
               </p>
             </div>
 

@@ -46,7 +46,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10rem;
-  background: var(--grey-dark);
+  background: var(--brand-primary);
 }
 
 h1,

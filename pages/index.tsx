@@ -242,7 +242,7 @@ const Home = ({ isReady = false }: HomeProps) => {
 
   return (
     <Layout
-      title="JordanInTech | Mobile-First Software Solutions"
+      title="Jordan In Tech | Production-Grade Software Development"
       description="We build production-grade software for businesses that can't afford downtime. Mobile apps, web platforms, backend systems—architected to handle growth, not just launch day."
       keywords="software development, mobile apps, web applications, React Native, Next.js, Django, system architecture, database design, The Gambia, Kairaba Avenue"
       ogImage="/images/og-home.jpg"

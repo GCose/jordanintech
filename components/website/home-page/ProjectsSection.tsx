@@ -22,7 +22,7 @@ const projects = [
   {
     id: 2,
     title: "Trygg Backend",
-    category: "Systems Design & Development",
+    category: "Systems Architecture & Backend Development",
     year: "2023",
     image: "/images/home-page/trygg.png",
     storeLinks: {
