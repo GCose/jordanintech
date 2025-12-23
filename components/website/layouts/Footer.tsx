@@ -134,6 +134,7 @@ const Footer = () => {
       <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
         <div className="absolute top-0 left-1/3 w-px h-full bg-foreground"></div>
         <div className="absolute top-0 left-2/3 w-px h-full bg-foreground"></div>
+        <div className="absolute top-0 left-5/6 w-px h-full bg-background"></div>
       </div>
 
       <div className="relative px-4 md:px-8">
@@ -179,7 +180,7 @@ const Footer = () => {
           <div className="col-span-12 md:col-span-12 md:col-start-1 relative py-2">
             <h2
               ref={titleRef}
-              className="text-[clamp(4rem,15vw,20rem)] leading-none tracking-[-0.04em] uppercase"
+              className="text-[clamp(4rem,12vw,15rem)] leading-none tracking-[-0.04em] uppercase"
             >
               {splitText("JORDAN")}
               <br />
@@ -190,7 +191,7 @@ const Footer = () => {
 
             <div
               ref={logoRef}
-              className="absolute top-0 left-1/2 lg:right-10 pb-170 "
+              className="absolute top-[10%] left-1/2 lg:right-10 md:pb-[20%] "
             >
               <div className="relative w-20 h-20 md:w-28 md:h-28 lg:w-172 lg:h-172">
                 <Image
