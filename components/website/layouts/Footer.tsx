@@ -143,25 +143,25 @@ const Footer = () => {
             <div ref={linksRef} className="flex items-center gap-4 md:gap-8">
               <Link
                 href="/work"
-                className="text-xs md:text-sm font-medium tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
+                className="text-clamp[1.1rem,4vw,1.4rem] md:text-sm font-light tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-xs md:text-sm font-medium tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
+                className="text-clamp[1.1rem,4vw,1.4rem] md:text-sm font-light tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
               >
                 About
               </Link>
               <Link
                 href="/work"
-                className="text-xs md:text-sm font-medium tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
+                className="text-clamp[1.1rem,4vw,1.4rem] md:text-sm font-light tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
               >
                 Work
               </Link>
               <Link
                 href="/contact"
-                className="text-xs md:text-sm font-medium tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
+                className="text-clamp[1.1rem,4vw,1.4rem] md:text-sm font-light tracking-wider text-foreground uppercase hover:text-brand-primary transition-colors duration-300"
               >
                 Contact
               </Link>
@@ -170,7 +170,7 @@ const Footer = () => {
             <div ref={emailRef}>
               <Link
                 href="mailto:info@jordanintech.com"
-                className="text-xs md:text-sm font-medium tracking-wider text-foreground hover:text-brand-primary transition-colors duration-300"
+                className="text-clamp[1.1rem,4vw,1.4rem] md:text-sm font-light tracking-wider text-foreground hover:text-brand-primary transition-colors duration-300"
               >
                 info@jordanintech.com
               </Link>
@@ -206,17 +206,17 @@ const Footer = () => {
 
           <div className="col-span-12 flex items-center justify-between md:mt-30 pt-6 border-t border-foreground/10">
             <div ref={copyrightRef}>
-              <p className="text-xs font-light text-grey-medium tracking-wide">
+              <p className="text-clamp[1.1rem,3vw,1.3rem] font-light text-grey-medium tracking-wide">
                 © 2025 JordanInTech. All Rights Reserved
               </p>
             </div>
 
             <div ref={phoneRef}>
               <a
-                href="tel:+2203975650"
-                className="text-xs font-light text-grey-medium hover:text-brand-primary transition-colors duration-300 tracking-wide"
+                href="tel:+2205176584"
+                className="text-clamp[1.1rem,3vw,1.3rem] font-light text-grey-medium hover:text-brand-primary transition-colors duration-300 tracking-wide"
               >
-                +220 397 5650
+                +220 517 6584
               </a>
             </div>
           </div>

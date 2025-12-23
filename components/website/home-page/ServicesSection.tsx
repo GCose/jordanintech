@@ -333,7 +333,7 @@ const ServicesSection = () => {
 
       <div
         ref={catchyTextRef}
-        className="absolute top-[20%] md:top-[70%] right-0 text-[clamp(15rem,35vw,35rem)] text-brand-primary/10 leading-none pointer-events-none select-none"
+        className="absolute top-[20%] md:top-[80%] right-0 text-[clamp(15rem,35vw,35rem)] text-brand-primary/10 leading-none pointer-events-none select-none"
       >
         FULL
         <br />
