@@ -152,13 +152,13 @@ const Navigation = ({
                   <li key={item.href} className="relative">
                     <Link
                       href={item.href}
-                      className={`group flex items-center gap-2 text-sm font-medium transition-colors duration-300 ${
+                      className={`group flex items-center gap-2 text-[clamp(1.1rem,4vw,1.3rem)] font-light transition-colors duration-300 ${
                         isActive
                           ? "text-brand-primary"
                           : "text-foreground hover:text-brand-primary"
                       }`}
                     >
-                      <span className="text-[0.625rem] font-light text-grey-medium transition-colors duration-300 group-hover:text-brand-primary">
+                      <span className="text-[0.625rem] font-bold text-grey-medium transition-colors duration-300 group-hover:text-brand-primary">
                         {item.index}
                       </span>
                       <span className="relative">
