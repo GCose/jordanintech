@@ -186,7 +186,7 @@ const CTASection = () => {
                 href="/contact"
                 className="group inline-flex items-center gap-4 text-base font-medium tracking-widest text-background uppercase transition-all duration-500 hover:text-brand-primary"
               >
-                <span className="text-white">Book a Strategy Call</span>
+                <span>Book a Strategy Call</span>
                 <div className="w-16 h-0.5 bg-background transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
                 <svg
                   className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"

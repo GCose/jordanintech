@@ -11,33 +11,40 @@ const projects = [
     id: 1,
     title: "Modem Pay Merchant Mobile",
     category: "Mobile Application",
-    location: "Accra, GH",
     year: "2023",
     image: "/images/home-page/hero.jpg",
+    storeLinks: {
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.modempay.merchant",
+      appStore: "https://apps.apple.com/app/modempay-merchant/id123456789",
+    },
   },
   {
     id: 2,
     title: "Trygg Backend",
     category: "System Architecture",
-    location: "Lagos, NG",
     year: "2023",
     image: "/images/home-page/hero-3.jpg",
+    storeLinks: {
+      playStore: "https://play.google.com/store/apps/details?id=com.trygg",
+      appStore: "https://apps.apple.com/app/trygg/id123456789",
+    },
   },
   {
     id: 3,
     title: "GamCraft",
     category: "Mobile Application",
-    location: "Banjul, GM",
     year: "2024",
     image: "/images/home-page/about.jpg",
+    storeLinks: null,
   },
   {
     id: 4,
     title: "Cribio",
     category: "Mobile Application",
-    location: "Dakar, SN",
     year: "2024",
     image: "/images/home-page/about.jpeg",
+    storeLinks: null,
   },
 ];
 
@@ -119,7 +126,7 @@ const ProjectsSection = () => {
 
         const container = cardsContainerRef.current;
         const containerRect = container.getBoundingClientRect();
-        const cardImage = card.querySelector(".aspect-16\\/10");
+        const cardImage = card.querySelector(".aspect-video");
 
         if (!cardImage) return null;
 
@@ -277,19 +284,9 @@ const ProjectsSection = () => {
         scrollTrigger: {
           trigger: cardsContainerRef.current,
           start: "top top",
-          end: "top top+=10%",
-          scrub: 1,
-        },
-      });
-
-      gsap.to(logoRef.current, {
-        opacity: 0,
-        scale: 0.8,
-        scrollTrigger: {
-          trigger: cardsContainerRef.current,
-          start: "bottom-=10% top",
           end: "bottom top",
           scrub: 1,
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -522,39 +519,59 @@ const ProjectsSection = () => {
             >
               <div className="grid grid-cols-12 gap-8">
                 <div className="col-span-8 col-start-3">
-                  <Link
-                    href={`/work/${project.id}`}
-                    className="block group cursor-pointer"
-                  >
-                    <div className="relative w-full aspect-16/10 overflow-hidden mb-8 z-10">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
+                  <div className="block group cursor-pointer">
+                    <Link href={`/work/${project.id}`}>
+                      <div className="relative w-full aspect-video overflow-hidden mb-8 z-10">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                    </Link>
 
                     <div className="flex items-end justify-between">
-                      <div>
-                        <h3 className="text-4xl md:text-6xl font-light text-background mb-2">
-                          {project.title}
-                        </h3>
-                        <p className="text-lg text-grey-medium">
-                          {project.category}
-                        </p>
-                      </div>
+                      <Link href={`/work/${project.id}`}>
+                        <div>
+                          <h3 className="text-4xl md:text-6xl font-light text-background mb-2">
+                            {project.title}
+                          </h3>
+                          <p className="text-lg text-grey-medium">
+                            {project.category}
+                          </p>
+                        </div>
+                      </Link>
 
-                      <div className="text-right">
-                        <p className="text-sm text-grey-medium mb-1">
-                          {project.location}
-                        </p>
-                        <p className="text-sm text-grey-medium">
-                          {project.year}
-                        </p>
+                      <div className="flex items-center gap-3">
+                        {project.storeLinks ? (
+                          <>
+                            <a
+                              href={project.storeLinks.playStore}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                            >
+                              Play Store
+                            </a>
+                            <span className="text-grey-medium">•</span>
+                            <a
+                              href={project.storeLinks.appStore}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                            >
+                              App Store
+                            </a>
+                          </>
+                        ) : (
+                          <p className="text-sm text-grey-medium">
+                            {project.year}
+                          </p>
+                        )}
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -564,38 +581,57 @@ const ProjectsSection = () => {
         <div className="relative w-full mt-32 px-4 space-y-16">
           {projects.map((project) => (
             <div key={project.id} className="w-full">
-              <Link
-                href={`/work/${project.id}`}
-                className="block group cursor-pointer"
-              >
-                <div className="relative w-full aspect-16/10 overflow-hidden mb-8">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-transparent to-transparent"></div>
-                </div>
+              <div className="block group cursor-pointer">
+                <Link href={`/work/${project.id}`}>
+                  <div className="relative w-full aspect-video overflow-hidden mb-8">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-transparent to-transparent"></div>
+                  </div>
+                </Link>
 
                 <div className="flex items-end justify-between">
-                  <div>
-                    <h3 className="text-4xl font-light text-background mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-lg text-grey-medium">
-                      {project.category}
-                    </p>
-                  </div>
+                  <Link href={`/work/${project.id}`}>
+                    <div>
+                      <h3 className="text-4xl font-light text-background mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-lg text-grey-medium">
+                        {project.category}
+                      </p>
+                    </div>
+                  </Link>
 
-                  <div className="text-right">
-                    <p className="text-sm text-grey-medium mb-1">
-                      {project.location}
-                    </p>
-                    <p className="text-sm text-grey-medium">{project.year}</p>
+                  <div className="flex flex-col items-end gap-1">
+                    {project.storeLinks ? (
+                      <>
+                        <a
+                          href={project.storeLinks.playStore}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                        >
+                          Play Store
+                        </a>
+                        <a
+                          href={project.storeLinks.appStore}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-grey-medium hover:text-brand-primary transition-colors duration-300"
+                        >
+                          App Store
+                        </a>
+                      </>
+                    ) : (
+                      <p className="text-sm text-grey-medium">{project.year}</p>
+                    )}
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </div>
