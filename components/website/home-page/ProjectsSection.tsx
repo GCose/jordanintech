@@ -590,7 +590,7 @@ const ProjectsSection = () => {
           ))}
         </div>
       ) : (
-        <div className="relative w-full mt-32 px-4 space-y-16">
+        <div className="relative w-full mt-32 px-4 space-y-36">
           {projects.map((project) => (
             <div key={project.id} className="w-full">
               <div className="block group cursor-pointer">
