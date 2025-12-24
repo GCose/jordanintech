@@ -498,7 +498,7 @@ const ServicesSection = () => {
                               key={idx}
                               className={`accordion-feature-${index} flex items-center gap-2 text-[clamp(1.1rem,2vw,1.2rem)] font-light`}
                             >
-                              <div className="w-1.5 h-1.5 rounded-full bg-green-600"></div>
+                              <div className="w-1.5 h-1.5 rounded-full bg-brand-primary"></div>
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -558,7 +558,7 @@ const ServicesSection = () => {
                           key={idx}
                           className="flex items-center gap-2 text-sm font-light"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-green-600"></div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-brand-primary"></div>
                           <span>{feature}</span>
                         </div>
                       ))}
