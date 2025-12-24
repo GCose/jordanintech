@@ -71,6 +71,11 @@ h6 {
   }
 }
 
+.max-width {
+  margin: 0 auto;
+  max-width: 2500px;
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

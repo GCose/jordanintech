@@ -72,7 +72,7 @@ const Layout = ({
         />
       </Head>
 
-      <div className="relative min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background max-width">
         <Navigation isReady={isReady} />
         <main className="relative">{children}</main>
         <Footer />
