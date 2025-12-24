@@ -498,7 +498,7 @@ const ServicesSection = () => {
                               key={idx}
                               className={`accordion-feature-${index} flex items-center gap-2 text-[clamp(1.1rem,2vw,1.2rem)] font-light`}
                             >
-                              <div className="w-1.5 h-1.5 rounded-full bg-brand-primary"></div>
+                              <div className="w-1.5 h-1.5 rounded-full bg-green-600"></div>
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -558,7 +558,7 @@ const ServicesSection = () => {
                           key={idx}
                           className="flex items-center gap-2 text-sm font-light"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-brand-primary"></div>
+                          <div className="w-1.5 h-1.5 rounded-full bg-green-600"></div>
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -569,13 +569,13 @@ const ServicesSection = () => {
             ))}
           </div>
         )}
-        <div className="col-span-12 md:col-span-6 md:col-start-3 flex items-center gap-8 mt-12">
+        <div className="col-span-12 md:col-span-6 mx-auto md:col-start-3 flex items-center gap-8 mt-12">
           <Link
             href="/work"
-            className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-brand-primary"
+            className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-green-600 p-4 border-l border-t border-b"
           >
             <span className="relative z-10">Let{"'"}s build together</span>
-            <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
+            <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-green-600"></div>
             <svg
               className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
               fill="none"

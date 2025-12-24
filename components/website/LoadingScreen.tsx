@@ -143,12 +143,12 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         <div className="absolute top-0 left-5/6 w-px h-full bg-foreground"></div>
       </div>
 
-      <div
+      <h1
         ref={bgTextRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(8rem,20vw,18rem)] font-bold leading-none tracking-[-0.04em] text-brand-primary/5 opacity-0 select-none pointer-events-none"
       >
         JIT
-      </div>
+      </h1>
 
       <div className="relative w-full h-full flex flex-col items-center justify-center px-8 max-w-[clamp(800px,90vw,1200px)] mx-auto">
         <div
@@ -211,7 +211,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         </div>
 
         <div className="absolute bottom-28 md:bottom-36 left-8 flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></div>
+          <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></div>
           <span className="text-[0.625rem] font-light text-grey-medium tracking-[0.2em] uppercase">
             Banjul, GM
           </span>

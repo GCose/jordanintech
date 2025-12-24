@@ -358,12 +358,12 @@ const AboutSection = forwardRef<HTMLElement>((props, ref) => {
           <div className="col-span-12 md:col-span-10 md:col-start-2 md:row-start-5 text-center">
             <Link
               href="/work"
-              className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-brand-primary"
+              className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-green-600 p-4 border-l border-t border-b"
             >
               <span className="relative z-10">
                 Let{"'"}s build your solution now
               </span>
-              <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
+              <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-green-600"></div>
               <svg
                 className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
                 fill="none"

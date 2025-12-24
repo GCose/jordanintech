@@ -140,9 +140,9 @@ const Navigation = ({
               onClick={closeMobileMenu}
             >
               <div className="flex flex-col leading-none">
-                <span className="text-[clamp(1.125rem,1.5vw,3rem)] text-brand-primary">
+                <h1 className="text-[clamp(1.125rem,1.5vw,3rem)] text-brand-primary">
                   JIT
-                </span>
+                </h1>
               </div>
             </Link>
 
@@ -178,7 +178,7 @@ const Navigation = ({
 
             <div ref={statusRef} className="hidden md:flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
+                <div className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
                 <span className="text-xs font-light text-grey-medium">
                   Available
                 </span>

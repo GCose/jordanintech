@@ -205,8 +205,8 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
               <p className="text-[clamp(1.5rem,2vw,2.5rem)] font-light text-grey-medium leading-relaxed">
                 We build production-grade, performant software for businesses
                 that can{"'"}t afford downtime. Mobile apps, web platforms,
-                backend systems—architected to handle growth, not just on
-                launch day.
+                backend systems—architected to handle growth, not just on launch
+                day.
               </p>
             </div>
 
@@ -216,10 +216,10 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
             >
               <Link
                 href="/work"
-                className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-brand-primary"
+                className="group relative inline-flex items-center gap-4 text-base font-medium tracking-widest text-foreground uppercase transition-all duration-500 hover:text-green-600 p-4 border-l border-t border-b"
               >
                 <span className="relative z-10">Let{"'"}s build together</span>
-                <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-brand-primary"></div>
+                <div className="w-16 h-0.5 bg-foreground transition-all duration-500 group-hover:w-24 group-hover:bg-green-600"></div>
                 <svg
                   className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
                   fill="none"
@@ -236,7 +236,7 @@ const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(
               </Link>
 
               <div className="hidden md:flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></div>
+                <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></div>
                 <span className="text-sm text-grey-medium">
                   Kairaba Avenue, Banjul
                 </span>
