@@ -12,7 +12,7 @@ const projects = [
     title: "Modem Pay Merchant Mobile",
     category: "Mobile Application",
     year: "2023",
-    image: "/images/home-page/modempayapp.png",
+    image: "/images/home-page/modempayapp2.png",
     storeLinks: {
       playStore:
         "https://play.google.com/store/apps/details?id=com.modempay.modempaymerchant",
@@ -24,7 +24,7 @@ const projects = [
     title: "Trygg Backend",
     category: "Systems Architecture & Backend Development",
     year: "2023",
-    image: "/images/home-page/trygg.png",
+    image: "/images/home-page/trygg2.png",
     storeLinks: {
       playStore:
         "https://play.google.com/store/apps/details?id=com.trygg.driver",
@@ -35,7 +35,7 @@ const projects = [
     id: 3,
     title: "GamCraft",
     category: "Mobile Application",
-    year: "2024",
+    year: "2024 ",
     image: "/images/home-page/about.jpg",
     storeLinks: null,
   },
